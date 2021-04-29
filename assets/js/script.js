@@ -20,9 +20,46 @@ searchButton.on("click", function(event){
 })
 
 function displayInfo(rawData){
-    
+    $("#search-input").val("");
+    if ($(".about-the-author").length){
+        $(".about-the-author").empty();
+        $(".about-the-author").remove();
+    }  
+        console.log( $(".about-the-author").length)
+    let firstDiv= $("<div>")
+            .addClass("about-the-author")
+            .appendTo(document.body)
+    let secondDiv =$("<div>")
+            .addClass("row")
+            .appendTo(firstDiv)
+    let thirdDiv = $("<div>")
+            .addClass("small-12 medium-4 columns")
+            .appendTo(secondDiv)
+    let fourthDiv = $("<div>")
+            .addClass("author-image")
+            .appendTo(thirdDiv)
+            $("<img>")
+            .attr("id", "thumbnail")
+            .attr("src", rawData.data.results[0].thumbnail.path + ".jpg")
+            .appendTo(fourthDiv)
+    let pDiv = $("<div>")
+            .addClass("small-12 medium-8 columns")
+            .appendTo(secondDiv)
+            $("<h4>")
+            .addClass("separator-left author-title")
+            .appendTo(pDiv)
+            $("<p>")
+            .attr("id", "description")
+            .appendTo(pDiv)
+
+    let heroTitle = $(".author-title");
+    let heroDescription = $("#description");
+    heroTitle.text(rawData.data.results[0].name);
+    heroDescription.text(rawData.data.results[0].description)
+    $("#thumbnail").attr("src", rawData.data.results[0].thumbnail.path + ".jpg")
+
     console.log(rawData)
-    console.log (rawData.data.results.name)
+ 
    
 }
 
