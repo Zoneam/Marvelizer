@@ -1,9 +1,14 @@
-
 /* bb_sets background image for both pages */
-body{
-  background-image: url('../../assets/images/marvelherobackground.png');
+body {
+  background-image: url("../../assets/images/marvelherobackground.png");
 }
-
+.small-image {
+  width: 25%;
+}
+.giphy-div {
+  width: 200px;
+  display: inline-block;
+}
 .subnav-hero-section {
   text-align: center;
   background: #323a3f;
@@ -39,6 +44,7 @@ body{
 .input-group-rounded .input-group-button .button {
   border-radius: 0 5000px 5000px 0;
   font-size: 0.8rem;
+  height: inherit;
 }
 
 .input-group {
@@ -159,11 +165,11 @@ body{
   opacity: 0.8;
 }
 
-.card-div {
+/* .card-div {
   width: 400px;
   height: 600px;
   padding: 30px;
-}
+} */
 
 #content-wrapper {
   display: flex;
@@ -251,4 +257,3 @@ body{
 .about-the-author .author-image {
   border: 1px solid #cacaca;
 }
-
