@@ -2,10 +2,10 @@
 $(document).foundation();
 
 $("#search-button").on("click", function(event){
-    // $('exampleModal2').foundation('reveal', 'open');
     event.preventDefault();
+    // $('exampleModal2').foundation('reveal', 'open');
     let searchInput =  $("#search-input").val();
-    let apiLink = `http://gateway.marvel.com/v1/public/characters?name=${ searchInput }&ts=1&apikey=2ef8d58d6e4c1a6eb9fe640436563e2c&hash=4b46213c75452f9fc065e74ea4d8d2d3`
+    let apiLink = `https://gateway.marvel.com/v1/public/characters?name=${ searchInput }&ts=1&apikey=2ef8d58d6e4c1a6eb9fe640436563e2c&hash=4b46213c75452f9fc065e74ea4d8d2d3`
     fetch(apiLink).then(function(response){
         if (response.status == 200) {
             response.json().then(function (data) {
