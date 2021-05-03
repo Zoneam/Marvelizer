@@ -1,3 +1,9 @@
+
+/* bb_sets background image for both pages */
+body{
+  background-image: url('../../assets/images/marvelherobackground.png');
+}
+
 .subnav-hero-section {
   text-align: center;
   background: #323a3f;
@@ -245,3 +251,4 @@
 .about-the-author .author-image {
   border: 1px solid #cacaca;
 }
+
