@@ -101,17 +101,18 @@ function displayGiphys(giphyData){
             $(".giphy-div").empty();
             $(".giphy-div").remove();
         }  
+        let bigGiphyDiv =  $("<div>")
+        .addClass("bigGiphyDiv")
+        .appendTo(document.body)
         giphyData.data.forEach(function(){
             if(giphyData.data[y].images.downsized_medium.height <= 350 && giphyData.data[y].images.downsized_medium.height >= 200){
                 let secondtGiphyDiv = $("<div>")
                 .addClass("giphy-div card card-select")
-                .appendTo(document.body);
+                .appendTo(bigGiphyDiv);
                 $("<img>")
                 .addClass("giphys")
                 .attr("src", giphyData.data[y].images.downsized_medium.url)
                 .appendTo(secondtGiphyDiv)
-
-
                 $("<img>")
                 .addClass("small-image")
                 .attr("src", giphyData.data[y].images.downsized_medium.url)

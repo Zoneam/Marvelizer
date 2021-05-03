@@ -3,11 +3,40 @@ body {
   background-image: url("../../assets/images/marvelherobackground.png");
 }
 .small-image {
-  width: 25%;
+  width: 15%;
+  margin: 2px;
+}
+.small-images-div {
+  width: 400px;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 0 auto;
+  background-color: transparent;
+  display: flex;
+}
+.bigGiphyDiv {
+  left: 20%;
+  right: 20%;
+  width: 1300px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  /* position: absolute; */
+  margin: 0 auto;
+  margin-top: 15px;
+  background-color: transparent;
 }
 .giphy-div {
-  width: 200px;
-  display: inline-block;
+  margin-left: 10px;
+  width: 150px;
+  /* display: inline-block; */
+  box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.giphys {
+  height: -webkit-fill-available;
 }
 .subnav-hero-section {
   text-align: center;
@@ -55,6 +84,16 @@ body {
   transition: 1.5s ease;
   font-size: 0.5em;
 }
+
+/* .giphy-div:hover {
+  transition: 0.8s ease;
+  width: 250px;
+} */
+
+/* .giphy-div:not(:hover) {
+  transition: 0.4s ease;
+  width: 200px;
+} */
 
 .subnav-hero-headline:hover small {
   transition: 0.8s ease;
@@ -256,4 +295,20 @@ body {
 
 .about-the-author .author-image {
   border: 1px solid #cacaca;
+}
+
+@media (max-width: 750px) {
+  .bigGiphyDiv {
+    left: 3%;
+    right: 3%;
+    width: 300px;
+  }
+
+  .giphy-div {
+    margin: 2px auto;
+    width: 100px;
+  }
+  .small-images-div {
+    width: 100%;
+  }
 }
