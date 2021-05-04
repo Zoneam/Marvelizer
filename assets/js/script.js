@@ -1,6 +1,7 @@
 
 $(document).foundation();
 let searchInput;
+let favCount;
 let choosenGiphys = {
     name: "",
     urls: []
@@ -86,6 +87,14 @@ function displayInfo(rawData){
                 $("<p>")
                 .attr("id", "description")
                 .appendTo(pDiv)
+                $("<span>")
+                .text("Favorites")
+                .addClass("spanClass")
+                .appendTo(secondDiv)
+                $("<span>")
+                .text("12  Left")
+                .addClass("spanClassNumber")
+                .appendTo(secondDiv)
                 $("<div>")
                 .addClass("small-12 medium-4 columns small-images-div")
                 .appendTo(secondDiv)
@@ -134,9 +143,11 @@ function displayGiphys(giphyData){
 
 // add click listener for giphys
 function addClickListenerBigGiphys() {
+    
     $(".giphy-div").click(function(event) {
         if($(".small-images-div").children().length < 1){
             clickListenerSmllGiphys();
+            favCount = 12;
         }
         let sourceGif = $(this).children('img').attr('src');
         // console.log($(".small-images-div").children())
@@ -145,10 +156,14 @@ function addClickListenerBigGiphys() {
             if(sourceGif === $(this).attr('src')) {
                 console.log("Matches")
                 $(this).remove();
+                
             } 
         })
         if(!choosenGiphys.urls.includes(sourceGif)) {
+            favCount--;
+            $(".spanClassNumber").text(favCount + "  Left")
             choosenGiphys.urls.unshift(sourceGif)
+            console.log(favCount);
         }
         // choosenGiphys.urls.unshift($(this).children('img').attr('src'))
         $("<img>")
@@ -159,9 +174,11 @@ function addClickListenerBigGiphys() {
     console.log(choosenGiphys)
     })
 }
-
+// click listener for favorite
 function clickListenerSmllGiphys(){
     $(".small-images-div").on("click", "img", (function(event) {
+        favCount++;
+        $(".spanClassNumber").text(favCount + "  Left")
         choosenGiphys.urls.forEach(element => {
           if (element == $(this).attr('src')) {
             choosenGiphys.urls.splice(choosenGiphys.urls.indexOf(element.trim()) , 1 );

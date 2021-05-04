@@ -14,7 +14,25 @@ body {
   margin: 0 auto;
   background-color: transparent;
   display: flex;
+  border: dashed;
 }
+
+.spanClass {
+  left: 150px;
+  position: relative;
+  /* width: 200px; */
+  font-size: larger;
+  font-weight: 700;
+}
+
+.spanClassNumber {
+  left: 170px;
+  position: relative;
+  /* width: 200px; */
+  font-size: larger;
+  font-weight: 700;
+}
+
 .bigGiphyDiv {
   left: 20%;
   right: 20%;
@@ -321,7 +339,7 @@ body {
     width: 100px;
   }
   .small-image {
-    height: 100px;
+    height: 50px; //100px
   }
 
   .giphy-div {
@@ -337,5 +355,11 @@ body {
     width: 100%;
     height: fit-content;
     flex-wrap: wrap;
+  }
+}
+
+@media print, screen and (min-width: 40em) {
+  .medium-4 {
+    width: 32.33333%;
   }
 }
