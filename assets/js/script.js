@@ -2,6 +2,7 @@
 $(document).foundation();
 let searchInput;
 let favCount;
+let addListener;
 let choosenGiphys = {
     name: "",
     urls: []
@@ -25,7 +26,7 @@ $("#search-button").on("click", function(event){
                     let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=80&offset=0&rating=g&lang=en`
                     fetch(giphyApi).then(function(giphyData){
                         if (giphyData.status == 200){
-                            giphyData.json().then(function (giphyData) {
+                            giphyData.json().then(function (giphyData) { 
                                 choosenGiphys = {
                                     name: "",
                                     urls: []
@@ -60,6 +61,7 @@ function displayInfo(rawData){
         if ($(".about-the-author").length){
             $(".about-the-author").empty();
             $(".about-the-author").remove();
+            addListener = false;
         }  
             // console.log( $(".about-the-author").length)
         let firstDiv= $("<div>")
@@ -103,6 +105,7 @@ function displayInfo(rawData){
         heroTitle.text(rawData.data.results[0].name);
         heroDescription.text(rawData.data.results[0].description)
         $("#thumbnail").attr("src", rawData.data.results[0].thumbnail.path + ".jpg")
+        addListener = true;
         // console.log(rawData)
             } 
  else {
@@ -145,9 +148,11 @@ function displayGiphys(giphyData){
 function addClickListenerBigGiphys() {
     
     $(".giphy-div").click(function(event) {
-        if($(".small-images-div").children().length < 1){
+        console.log("len",$(".small-images-div").children().length) //--------------------
+        if(addListener === true){
             clickListenerSmllGiphys();
             favCount = 12;
+            addListener = false;
         }
         let sourceGif = $(this).children('img').attr('src');
         // console.log($(".small-images-div").children())
@@ -156,14 +161,13 @@ function addClickListenerBigGiphys() {
             if(sourceGif === $(this).attr('src')) {
                 console.log("Matches")
                 $(this).remove();
-                
             } 
         })
         if(!choosenGiphys.urls.includes(sourceGif)) {
             favCount--;
             $(".spanClassNumber").text(favCount + "  Left")
             choosenGiphys.urls.unshift(sourceGif)
-            console.log(favCount);
+            console.log("fav--", favCount);
         }
         // choosenGiphys.urls.unshift($(this).children('img').attr('src'))
         $("<img>")
@@ -177,7 +181,7 @@ function addClickListenerBigGiphys() {
 // click listener for favorite
 function clickListenerSmllGiphys(){
     $(".small-images-div").on("click", "img", (function(event) {
-        favCount++;
+               favCount++;
         $(".spanClassNumber").text(favCount + "  Left")
         choosenGiphys.urls.forEach(element => {
           if (element == $(this).attr('src')) {
