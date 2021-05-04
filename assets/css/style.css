@@ -320,6 +320,9 @@ body {
   .giphys {
     width: 100px;
   }
+  .small-image {
+    height: 100px;
+  }
 
   .giphy-div {
     margin: 2px auto;
@@ -330,8 +333,8 @@ body {
     height: 40px;
   }
   .small-images-div {
+    justify-content: center;
     width: 100%;
-
     height: fit-content;
     flex-wrap: wrap;
   }
