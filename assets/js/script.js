@@ -89,16 +89,8 @@ function displayInfo(rawData){
                 $("<p>")
                 .attr("id", "description")
                 .appendTo(pDiv)
-                $("<span>")
-                .text("Favorites")
-                .addClass("spanClass")
-                .appendTo(secondDiv)
-                $("<span>")
-                .text("12  Left")
-                .addClass("spanClassNumber")
-                .appendTo(secondDiv)
                 $("<div>")
-                .addClass("small-12 medium-4 columns small-images-div")
+                .addClass("small-12 columns small-images-div")
                 .appendTo(secondDiv)
         let heroTitle = $(".author-title");
         let heroDescription = $("#description");
@@ -135,6 +127,7 @@ function displayGiphys(giphyData){
                 .appendTo(bigGiphyDiv);
                 $("<img>")
                 .addClass("giphys")
+                .attr("data-toggle","tooltip")
                 .attr("src", giphyData.data[y].images.downsized_medium.url)
                 .appendTo(secondtGiphyDiv)
                  }
@@ -146,7 +139,6 @@ function displayGiphys(giphyData){
 
 // add click listener for giphys
 function addClickListenerBigGiphys() {
-    
     $(".giphy-div").click(function(event) {
         console.log("len",$(".small-images-div").children().length) //--------------------
         if(addListener === true){
@@ -161,13 +153,13 @@ function addClickListenerBigGiphys() {
             if(sourceGif === $(this).attr('src')) {
                 console.log("Matches")
                 $(this).remove();
+                
             } 
         })
         if(!choosenGiphys.urls.includes(sourceGif)) {
             favCount--;
-            $(".spanClassNumber").text(favCount + "  Left")
-            choosenGiphys.urls.unshift(sourceGif)
-            console.log("fav--", favCount);
+            $(".giphys").attr("title", favCount + "  Left")
+            choosenGiphys.urls.unshift(sourceGif);
         }
         // choosenGiphys.urls.unshift($(this).children('img').attr('src'))
         $("<img>")
@@ -182,6 +174,7 @@ function addClickListenerBigGiphys() {
 function clickListenerSmllGiphys(){
     $(".small-images-div").on("click", "img", (function(event) {
                favCount++;
+               $(".giphys").attr("title", favCount + "  Left")
         $(".spanClassNumber").text(favCount + "  Left")
         choosenGiphys.urls.forEach(element => {
           if (element == $(this).attr('src')) {
@@ -191,3 +184,5 @@ function clickListenerSmllGiphys(){
         $(this).remove()
     }))
 }
+
+

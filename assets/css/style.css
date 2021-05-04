@@ -3,18 +3,9 @@ body {
   background-image: url("../../assets/images/marvelherobackground.png");
 }
 .small-image {
-  width: 25%;
-  margin: 2px;
+  width: 7%;
+  margin: 7px;
   box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
-}
-.small-images-div {
-  width: 400px;
-  flex-wrap: wrap;
-  height: auto;
-  margin: 0 auto;
-  background-color: transparent;
-  display: flex;
-  border: dashed;
 }
 
 .spanClass {
@@ -327,6 +318,17 @@ body {
   box-shadow: 0px 0px 11px 5px rgba(255, 131, 0, 0.7);
 }
 
+.small-images-div {
+  width: 400px;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 0 auto;
+  background-color: transparent;
+  display: flex;
+  border: dashed;
+  width: -webkit-fill-available;
+}
+
 @media (max-width: 750px) {
   .bigGiphyDiv {
     left: 3%;
@@ -362,4 +364,42 @@ body {
   .medium-4 {
     width: 32.33333%;
   }
+}
+
+.tooltip {
+  position: relative;
+  border-bottom: 1px dotted black;
+}
+.tooltip span {
+  visibility: hidden;
+  width: 10em;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 9;
+  top: -1em;
+  left: 100%;
+  margin-left: 1em;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.tooltip span::after {
+  content: "";
+  position: absolute;
+  top: 1.5em;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+.tooltip input {
+  display: none;
+}
+.tooltip input:checked + span {
+  visibility: visible;
+  opacity: 1;
 }
