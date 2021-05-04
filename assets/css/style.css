@@ -3,8 +3,9 @@ body {
   background-image: url("../../assets/images/marvelherobackground.png");
 }
 .small-image {
-  width: 15%;
+  width: 25%;
   margin: 2px;
+  box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
 }
 .small-images-div {
   width: 400px;
