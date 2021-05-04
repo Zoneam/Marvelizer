@@ -1,9 +1,20 @@
 
 $(document).foundation();
+let searchInput;
+
+let choosenGiphys = {
+    name: "",
+    urls: []
+};
+
+let favoriteGiphysBank = {
+    characterNames: [],
+    storedGiphys: []
+}
 
 $("#search-button").on("click", function(event){
     event.preventDefault();
-    let searchInput =  $("#search-input").val();
+    searchInput =  $("#search-input").val();
     let apiLink = `https://gateway.marvel.com/v1/public/characters?name=${ searchInput }&ts=1&apikey=2ef8d58d6e4c1a6eb9fe640436563e2c&hash=4b46213c75452f9fc065e74ea4d8d2d3`
     fetch(apiLink).then(function(response){
         if (response.status == 200) {
@@ -15,8 +26,8 @@ $("#search-button").on("click", function(event){
                     fetch(giphyApi).then(function(giphyData){
                         if (giphyData.status == 200){
                             giphyData.json().then(function (giphyData) {
-                            
-                            console.log("giphyData: " , giphyData);
+                            choosenGiphys.name = searchInput;
+                            // console.log("giphyData: " , giphyData);
                             displayGiphys(giphyData);
                     })
                         } else {
@@ -90,7 +101,6 @@ function displayInfo(rawData){
 }
 //--------- search when we hit enter
 $('#search-input').keypress(function(e){
-    console.log(e)
     if(e.keyCode == 13)
     $('#search-button').click();
   });
@@ -114,14 +124,11 @@ function displayGiphys(giphyData){
                 .addClass("giphys")
                 .attr("src", giphyData.data[y].images.downsized_medium.url)
                 .appendTo(secondtGiphyDiv)
-                $("<img>")
-                .addClass("small-image")
-                .attr("src", giphyData.data[y].images.downsized_medium.url)
-                .appendTo($(".small-images-div"))
+               
+
                  }
                 y++;
         })
-
     }
     addClickListenerBigGiphys();
 }
@@ -129,9 +136,41 @@ function displayGiphys(giphyData){
 // add click listener for giphys
 function addClickListenerBigGiphys() {
     $(".giphy-div").click(function(event) {
-        console.log("click")
-
+        if($(".small-images-div").children().length < 1){
+            clickListenerSallGiphys();
+        }
+        let sourceGif = $(this).children('img').attr('src');
+        // console.log($(".small-images-div").children())
+    if ($(".small-images-div").children().length < 12 ){
+         $(".small-images-div").children().each(function(){
+            if(sourceGif === $(this).attr('src')) {
+                console.log("Matches")
+                $(this).remove();
+            } 
+        })
+        if(!choosenGiphys.urls.includes(sourceGif)) {
+            choosenGiphys.urls.unshift(sourceGif)
+        }
+        // choosenGiphys.urls.unshift($(this).children('img').attr('src'))
+        $("<img>")
+        .addClass("small-image")
+        .attr("src", $(this).children('img').attr('src'))
+        .appendTo($(".small-images-div"))
+    }
+    console.log(choosenGiphys)
     })
+    
+}
+
+
+
+
+
+function clickListenerSallGiphys(){
+
+    $(".small-images-div").on("click", "img", (function(event) {
+       $(this).remove()
+    }))
 }
 
 
