@@ -85,16 +85,6 @@ body {
   font-size: 0.5em;
 }
 
-/* .giphy-div:hover {
-  transition: 0.8s ease;
-  width: 250px;
-} */
-
-/* .giphy-div:not(:hover) {
-  transition: 0.4s ease;
-  width: 200px;
-} */
-
 .subnav-hero-headline:hover small {
   transition: 0.8s ease;
   text-shadow: 5px 5px 3px rgb(63, 62, 62, 0.3);
@@ -295,6 +285,24 @@ body {
 
 .about-the-author .author-image {
   border: 1px solid #cacaca;
+}
+
+.giphy-div:not(:hover) {
+  transition: 0.4s ease;
+  border-radius: 2px;
+  box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
+  margin: 0px;
+
+  zoom: 100%;
+}
+
+.giphy-div:hover {
+  cursor: -webkit-grab;
+  transition: 0.8s ease;
+  border-radius: 3px 20px 3px 20px;
+  box-shadow: 0px 0px 22px 8px #ffef00;
+  margin: 15px;
+  zoom: 120%;
 }
 
 @media (max-width: 750px) {

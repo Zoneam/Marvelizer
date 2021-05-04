@@ -15,6 +15,7 @@ $("#search-button").on("click", function(event){
                     fetch(giphyApi).then(function(giphyData){
                         if (giphyData.status == 200){
                             giphyData.json().then(function (giphyData) {
+                            
                             console.log("giphyData: " , giphyData);
                             displayGiphys(giphyData);
                     })
@@ -122,6 +123,16 @@ function displayGiphys(giphyData){
         })
 
     }
+    addClickListenerBigGiphys();
 }
 
-// ------------
+// add click listener for giphys
+function addClickListenerBigGiphys() {
+    $(".giphy-div").click(function(event) {
+        console.log("click")
+
+    })
+}
+
+
+
