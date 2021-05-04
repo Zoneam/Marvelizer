@@ -314,13 +314,18 @@ body {
     left: 3%;
     right: 3%;
     width: 300px;
+    height: fit-content;
+    flex-wrap: wrap;
   }
 
   .giphy-div {
     margin: 2px auto;
-    width: 100px;
+    /* width: 100px; */
   }
   .small-images-div {
     width: 100%;
+    width: 300px;
+    height: fit-content;
+    flex-wrap: wrap;
   }
 }
