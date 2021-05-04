@@ -1,7 +1,6 @@
 
 $(document).foundation();
 let searchInput;
-
 let choosenGiphys = {
     name: "",
     urls: []
@@ -26,6 +25,10 @@ $("#search-button").on("click", function(event){
                     fetch(giphyApi).then(function(giphyData){
                         if (giphyData.status == 200){
                             giphyData.json().then(function (giphyData) {
+                                choosenGiphys = {
+                                    name: "",
+                                    urls: []
+                                };
                             choosenGiphys.name = searchInput;
                             // console.log("giphyData: " , giphyData);
                             displayGiphys(giphyData);
@@ -86,13 +89,11 @@ function displayInfo(rawData){
                 $("<div>")
                 .addClass("small-12 medium-4 columns small-images-div")
                 .appendTo(secondDiv)
-
         let heroTitle = $(".author-title");
         let heroDescription = $("#description");
         heroTitle.text(rawData.data.results[0].name);
         heroDescription.text(rawData.data.results[0].description)
         $("#thumbnail").attr("src", rawData.data.results[0].thumbnail.path + ".jpg")
-
         // console.log(rawData)
             } 
  else {
@@ -124,8 +125,6 @@ function displayGiphys(giphyData){
                 .addClass("giphys")
                 .attr("src", giphyData.data[y].images.downsized_medium.url)
                 .appendTo(secondtGiphyDiv)
-               
-
                  }
                 y++;
         })
@@ -137,7 +136,7 @@ function displayGiphys(giphyData){
 function addClickListenerBigGiphys() {
     $(".giphy-div").click(function(event) {
         if($(".small-images-div").children().length < 1){
-            clickListenerSallGiphys();
+            clickListenerSmllGiphys();
         }
         let sourceGif = $(this).children('img').attr('src');
         // console.log($(".small-images-div").children())
@@ -159,19 +158,15 @@ function addClickListenerBigGiphys() {
     }
     console.log(choosenGiphys)
     })
-    
 }
 
-
-
-
-
-function clickListenerSallGiphys(){
-
+function clickListenerSmllGiphys(){
     $(".small-images-div").on("click", "img", (function(event) {
-       $(this).remove()
+        choosenGiphys.urls.forEach(element => {
+          if (element == $(this).attr('src')) {
+            choosenGiphys.urls.splice(choosenGiphys.urls.indexOf(element.trim()) , 1 );
+          }
+       });
+        $(this).remove()
     }))
 }
-
-
-
