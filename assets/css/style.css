@@ -74,7 +74,7 @@ body {
 .input-group-rounded .input-group-button .button {
   border-radius: 0 5000px 5000px 0;
   font-size: 0.8rem;
-  height: inherit;
+  height: 40px;
 }
 
 .input-group {
@@ -313,18 +313,25 @@ body {
   .bigGiphyDiv {
     left: 3%;
     right: 3%;
-    width: 300px;
+    width: 80%;
     height: fit-content;
     flex-wrap: wrap;
+  }
+  .giphys {
+    width: 100px;
   }
 
   .giphy-div {
     margin: 2px auto;
-    /* width: 100px; */
+    width: 80px;
+    overflow: hidden;
+  }
+  header {
+    height: 40px;
   }
   .small-images-div {
     width: 100%;
-    width: 300px;
+
     height: fit-content;
     flex-wrap: wrap;
   }
