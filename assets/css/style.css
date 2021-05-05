@@ -403,3 +403,10 @@ body {
   visibility: visible;
   opacity: 1;
 }
+
+
+/* Favorites page styles */
+
+.search-list {
+  list-style-type: none;
+}
