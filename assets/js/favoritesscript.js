@@ -20,10 +20,10 @@ function displaySearchNames() {
 }
 
 function displayGifs(clickedName) {
-  if ($(".giphy-div").length){
-  $(".giphy-div").empty();
-  $(".giphy-div").remove();
-  }  
+  if ($(".bigGiphyDiv").length){
+    $(".bigGiphyDiv").empty();
+    $(".bigGiphyDiv").remove();
+    }  
   for (let i = 0; i < existingEntries.length; i++) {
     if (existingEntries[i].name == clickedName) {
       console.log(existingEntries[i].name);
