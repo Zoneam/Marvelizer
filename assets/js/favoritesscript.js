@@ -22,12 +22,10 @@ function displaySearchNames() {
 displaySearchNames()
 
 // event listener for list item clicks
-// let listClickEl = $(".search-name");  
-// listClickEl.on("click", function(event){
-//   event.preventDefault();
-//   console.log(event.target.text);
-//   let clickedItem = event.target;
-//   console.log(clickedItem + "  ---------");
-//   clickedItemText = clickedItem.text
-//   console.log(clickedItemText + "  ++++++++");
-// })
+
+let listClickEl = $(".search-name");  
+listClickEl.on("click", function(event){
+  event.preventDefault();
+  let clickedItem = $(this).text();
+  console.log(clickedItem + "  <---------");
+})
