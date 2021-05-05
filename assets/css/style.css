@@ -24,6 +24,20 @@ body {
   font-weight: 700;
 }
 
+/* Favorites page styles  */
+.search-list {
+  list-style-type: none;
+  text-align: left;
+}
+
+.search-list li {
+  color: darkgray;
+  background-color: white;
+  padding: 6px 105px 6px 6px;
+  margin-top: 10px;
+}
+/* End favorites page styles  */
+
 .bigGiphyDiv {
   left: 20%;
   right: 20%;
@@ -360,6 +374,7 @@ body {
   }
 }
 
+
 @media print, screen and (min-width: 40em) {
   .medium-4 {
     width: 32.33333%;
@@ -402,19 +417,4 @@ body {
 .tooltip input:checked + span {
   visibility: visible;
   opacity: 1;
-}
-
-
-/* Favorites page styles */
-
-.search-list {
-  list-style-type: none;
-  text-align: left;
-}
-
-.search-list li {
-  color: darkgray;
-  background-color: white;
-  padding: 6px 105px 6px 6px;
-  margin-top: 10px;
 }
