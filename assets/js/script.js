@@ -117,6 +117,10 @@ function displayGiphys(giphyData){
             $(".giphy-div").empty();
             $(".giphy-div").remove();
         }  
+        $("<img>")
+        .addClass("save-fav")
+        .attr("src","./assets/images/save.png")
+        .appendTo(document.body)
         let bigGiphyDiv =  $("<div>")
         .addClass("bigGiphyDiv")
         .appendTo(document.body)
@@ -140,7 +144,6 @@ function displayGiphys(giphyData){
 // add click listener for giphys
 function addClickListenerBigGiphys() {
     $(".giphy-div").click(function(event) {
-        console.log("len",$(".small-images-div").children().length) //--------------------
         if(addListener === true){
             clickListenerSmllGiphys();
             favCount = 12;
