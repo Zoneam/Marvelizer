@@ -8,6 +8,16 @@ body {
   box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
 }
 
+.save-fav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  width: 40px;
+  margin-left: 30px;
+
+  background-color: transparent;
+}
+
 .spanClass {
   left: 150px;
   position: relative;
@@ -23,20 +33,6 @@ body {
   font-size: larger;
   font-weight: 700;
 }
-
-/* Favorites page styles  */
-.search-list {
-  list-style-type: none;
-  text-align: left;
-}
-
-.search-list li {
-  color: darkgray;
-  background-color: white;
-  padding: 6px 105px 6px 6px;
-  margin-top: 10px;
-}
-/* End favorites page styles  */
 
 .bigGiphyDiv {
   left: 20%;
@@ -320,6 +316,15 @@ body {
   /* zoom: 100%; */
 }
 
+.save-fav:hover {
+  transition: 0.1s ease;
+  border-radius: 1px;
+  /* box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%); */
+  -webkit-filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
+  filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
+  cursor: -webkit-grab;
+}
+
 .giphy-div:hover {
   cursor: -webkit-grab;
   transition: 0.4s ease;
@@ -355,7 +360,7 @@ body {
     width: 100px;
   }
   .small-image {
-    height: 50px; //100px
+    height: 50px;
   }
 
   .giphy-div {
@@ -372,49 +377,14 @@ body {
     height: fit-content;
     flex-wrap: wrap;
   }
+  .save-fav {
+    margin-left: 5px;
+    width: 28px;
+  }
 }
-
 
 @media print, screen and (min-width: 40em) {
   .medium-4 {
     width: 32.33333%;
   }
-}
-
-.tooltip {
-  position: relative;
-  border-bottom: 1px dotted black;
-}
-.tooltip span {
-  visibility: hidden;
-  width: 10em;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 9;
-  top: -1em;
-  left: 100%;
-  margin-left: 1em;
-  opacity: 0;
-  transition: opacity 1s;
-}
-.tooltip span::after {
-  content: "";
-  position: absolute;
-  top: 1.5em;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent black transparent transparent;
-}
-.tooltip input {
-  display: none;
-}
-.tooltip input:checked + span {
-  visibility: visible;
-  opacity: 1;
 }
