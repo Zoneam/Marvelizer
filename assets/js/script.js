@@ -8,10 +8,7 @@ let choosenGiphys = {
     urls: []
 };
 
-let favoriteGiphysBank = {
-    characterNames: [],
-    storedGiphys: []
-}
+
 
 $("#search-button").on("click", function(event){
     event.preventDefault();
@@ -21,7 +18,7 @@ $("#search-button").on("click", function(event){
         if (response.status == 200) {
             response.json().then(function (data) {
                 if(data.data.count !== 0){
-                    console.log("CharacterData: " , data);
+                    // console.log("CharacterData: " , data);
                     displayInfo(data)
                     let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=80&offset=0&rating=g&lang=en`
                     fetch(giphyApi).then(function(giphyData){
@@ -139,6 +136,7 @@ function displayGiphys(giphyData){
         })
     }
     addClickListenerBigGiphys();
+    addListenerOnSticky();
 }
 
 // add click listener for giphys
@@ -154,7 +152,7 @@ function addClickListenerBigGiphys() {
     if ($(".small-images-div").children().length < 12 ){
          $(".small-images-div").children().each(function(){
             if(sourceGif === $(this).attr('src')) {
-                console.log("Matches")
+                // console.log("Matches")
                 $(this).remove();
                 
             } 
@@ -170,7 +168,7 @@ function addClickListenerBigGiphys() {
         .attr("src", $(this).children('img').attr('src'))
         .appendTo($(".small-images-div"))
     }
-    console.log(choosenGiphys)
+    // console.log(choosenGiphys)
     })
 }
 // click listener for favorite
@@ -188,4 +186,55 @@ function clickListenerSmllGiphys(){
     }))
 }
 
+// add click listener on sticky button
+let favoriteGiphysBank = {
+    characterNames: [],
+    storedGiphys: []
+};
 
+function addListenerOnSticky(){
+$(".save-fav").on("click", function(){
+
+    if ($(".small-images-div").children().length != 0 ){
+
+        $(".small-images-div").children().each(function(){
+            $(this).remove();
+        })
+                favoriteGiphysBank = JSON.parse(localStorage.getItem("Marvelizer")) || {characterNames: [], storedGiphys: []};
+                
+        if(!favoriteGiphysBank.characterNames.includes(choosenGiphys.name)){
+                favoriteGiphysBank.characterNames.unshift(choosenGiphys.name);
+                favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
+                localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
+                $(".save-fav").remove();
+                choosenGiphys = {
+                    name: "",
+                    urls: []
+                    };
+                   
+        } else if (favoriteGiphysBank.characterNames.includes(choosenGiphys.name)){
+            // if(favoriteGiphysBank.storedGiphys[favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name)].length < 12 ){
+                favoriteGiphysBank.characterNames.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name),1);
+                favoriteGiphysBank.storedGiphys.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name),1)
+                favoriteGiphysBank.characterNames.unshift(choosenGiphys.name);
+                favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
+                localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
+                $(".save-fav").remove();
+                choosenGiphys = {
+                    name: "",
+                    urls: []
+                    };
+        }
+
+
+console.log(favoriteGiphysBank)
+
+    }
+
+    
+
+})
+    
+
+
+}
