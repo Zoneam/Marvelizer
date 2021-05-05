@@ -1,7 +1,7 @@
 var names = [];
+var existingEntries = JSON.parse(localStorage.getItem("marvelizer"));
 
 function displaySearchNames() {
-  var existingEntries = JSON.parse(localStorage.getItem("marvelizer"));
   if (existingEntries !== null) {
     for (let i = 0; i < existingEntries.length; i++) {
       var storedName = existingEntries[i].name;
@@ -19,13 +19,37 @@ function displaySearchNames() {
   }
 }
 
+function displayGifs(clickedName) {
+  if ($(".giphy-div").length){
+  $(".giphy-div").empty();
+  $(".giphy-div").remove();
+  }  
+  for (let i = 0; i < existingEntries.length; i++) {
+    if (existingEntries[i].name == clickedName) {
+      console.log(existingEntries[i].name);
+      var gifUrl = existingEntries[i].url;
+      let bigGiphyDiv =  $("<div>")
+          .addClass("bigGiphyDiv")
+          .appendTo($(".gif-area"));
+      let secondtGiphyDiv = $("<div>")
+          .addClass("giphy-div card card-select")
+          .appendTo(bigGiphyDiv);
+      $("<img>")
+          .addClass("giphys")
+          .attr("data-toggle","tooltip")
+          .attr("src", gifUrl)
+          .appendTo(secondtGiphyDiv)
+    }
+  }
+}
+
 displaySearchNames()
 
 // event listener for list item clicks
-
 let listClickEl = $(".search-name");  
 listClickEl.on("click", function(event){
   event.preventDefault();
-  let clickedItem = $(this).text();
-  console.log(clickedItem + "  <---------");
+  let clickedName = $(this).text();
+  console.log(clickedName + "  <---------");
+  displayGifs(clickedName);
 })
