@@ -52,4 +52,10 @@ listClickEl.on("click", function(event){
   let clickedName = $(this).text();
   console.log(clickedName + "  <---------");
   displayGifs(clickedName);
+  $(".search-name")
+      .css("backgroundColor", "white")
+      .css("color", "darkgray");
+  $(event.target)
+    .css("backgroundColor", "red")
+    .css("color", "white");
 })
