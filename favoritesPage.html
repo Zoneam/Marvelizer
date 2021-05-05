@@ -1,86 +1,31 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marvelizer Favorites Page</title>
+    <title>Marvelizer</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-float.min.css"
-        integrity="sha256-4ldVyEvC86/kae2IBWw+eJrTiwNEbUUTmN0zkP4luL4=" crossorigin="anonymous">
-    <!-- foundation-prototype.min.css: Compressed CSS with prototyping classes -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css"
-        integrity="sha256-BiKflOunI0SIxlTOOUCQ0HgwXrRrRwBkIYppEllPIok=" crossorigin="anonymous">
-    <!-- foundation-rtl.min.css: Compressed CSS with right-to-left reading direction -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-rtl.min.css"
-        integrity="sha256-F+9Ns8Z/1ZISonBbojH743hsmF3x3AlQdJEeD8DhQsE=" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-</head>
-
-<body>
-    <div class="off-canvas-wrapper">
-        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-
-            <!-- Left Nav Bar. We can delete this section if it is unneccisary -->
-            <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
-                <div class="row column">
-                    <br>
-                    <!-- <img class="thumbnail" src="https://placehold.it/550x350"> -->
-                    <!-- <h5>Nav Spot</h5> -->
-                    <a href="#" class="button">Back to the Marvelizer</a>
-                    <button>
-                    <ul class="search-list"></ul>
-                </div>
-            </div>
-
-
-            <div class="off-canvas-content" data-off-canvas-content>
-                <div class="title-bar hide-for-large">
-                    <div class="title-bar-left">
-                        <button class="menu-icon" type="button" data-open="my-info"></button>
-                        <span class="title-bar-title">Marvelizer</span>
-                    </div>
-                </div>
-
-                <!-- **If we want to search a hero from this page, unccoment this to get marvelizer hero search** -->
-
-                <!-- <div class="callout primary">
-                    <header class="subnav-hero-section">
-                        <h1 class="subnav-hero-headline">MARVEL<small style="color: rgb(15, 24, 14);">izer</small></h1>
-                        <div class="input-group input-group-rounded">
-                            <input class="input-group-field" id="search-input" type="search"
-                                placeholder="Enter Character Name">
-                            <div class="input-group-button">
-                                <input type="submit" class="button secondary" id="search-button" value="Search">
-                            </div>
-                        </div>
-                    </header>
-                </div> -->
-                <!-- <div class="row small-up-2 medium-up-3 large-up-4" id="favoriteGifSpot"> -->
-                <div class="column gif-area">
-                    <!-- ******** <img class="thumbnail" src="https://placehold.it/550x550"> -->
-                </div>
-
-                <!--  <div class="column">    **example without any text**
-                        <img class="thumbnail" src="https://placehold.it/550x550">
-                    </div> -->
-                <!-- </div> -->
-
-            </div>
-        </div>
+  </head>
+  <body>
+    <div id="primary">
+      <div id="navArea">
+        <br>
+        <a href="index.html" class="button">Back to the Marvelizer search</a>
+        <hr>
+        <ul class="search-list"></ul>
+      </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-        integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    <div id="secondary">
+      <div class="row small-up-1 medium-up-2 large-up-3 gif-area"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script src="./assets/js/favoritesscript.js"></script>
-
-
     <script>
-        $(document).foundation();
+      $(document).foundation();
     </script>
-</body>
-
+  </body>
 </html>
