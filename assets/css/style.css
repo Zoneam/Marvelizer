@@ -8,6 +8,17 @@ body {
   box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
 }
 
+#thumbnail {
+  box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
+}
+.divWrap-Small-Images {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+
 #infobar {
   width: 100%;
   display: flex;
@@ -24,9 +35,9 @@ body {
   /* margin-left: 30px; */
   /* bottom: 0px; */
   /* top: 440px; */
-  align-self: flex-start;
+  align-self: center;
   width: 50px;
-  margin-left: 50px;
+  margin-top: 20px;
   background-color: transparent;
 }
 #favorites {
@@ -408,8 +419,9 @@ html {
 }
 
 .save-fav:hover {
-  transition: 0.1s ease;
+  transition: 0.3s ease;
   border-radius: 1px;
+  width: 55px;
   /* box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%); */
   -webkit-filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
   filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
@@ -417,8 +429,9 @@ html {
 }
 
 #save-message {
-  color: #e6e6e6;
-  text-shadow: 5px 5px 5px rgb(0, 0, 0);
+  margin-top: 10px;
+  align-self: center;
+  text-shadow: 4px 1px 6px rgb(0, 0, 0);
   font-size: 24px;
 }
 
