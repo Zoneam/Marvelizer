@@ -1,4 +1,3 @@
-
 $(document).foundation();
 let searchInput;
 let favCount;
@@ -7,8 +6,6 @@ let choosenGiphys = {
     name: "",
     urls: []
 };
-
-
 
 $("#search-button").on("click", function(event){
     event.preventDefault();
@@ -154,7 +151,6 @@ function addClickListenerBigGiphys() {
             if(sourceGif === $(this).attr('src')) {
                 // console.log("Matches")
                 $(this).remove();
-                
             } 
         })
         if(!choosenGiphys.urls.includes(sourceGif)) {
@@ -186,33 +182,34 @@ function clickListenerSmllGiphys(){
     }))
 }
 
-// add click listener on sticky button
-let favoriteGiphysBank = {
-    characterNames: [],
-    storedGiphys: []
-};
+// add click listener and save lo local storage on sticky button
+
 
 function addListenerOnSticky(){
+    $("#save-message").fadeOut(0);
 $(".save-fav").on("click", function(){
-
+    let favoriteGiphysBank;
     if ($(".small-images-div").children().length != 0 ){
-
         $(".small-images-div").children().each(function(){
             $(this).remove();
         })
-                favoriteGiphysBank = JSON.parse(localStorage.getItem("Marvelizer")) || {characterNames: [], storedGiphys: []};
-                
-        if(!favoriteGiphysBank.characterNames.includes(choosenGiphys.name)){
+        favoriteGiphysBank = JSON.parse( localStorage.getItem("Marvelizer") ) || { characterNames: [], storedGiphys: [] };
+        if( !favoriteGiphysBank.characterNames.includes(choosenGiphys.name) ) {
                 favoriteGiphysBank.characterNames.unshift(choosenGiphys.name);
                 favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
                 localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
                 $(".save-fav").remove();
+                $(".giphy-div").empty();
+                $(".giphy-div").remove();
+                $("#save-message")
+                .text("You Have Saved " + choosenGiphys.urls.length + " " + choosenGiphys.name + " Giphys to your Favorites")
+                .fadeIn(2000);
+                $("#save-message").fadeOut(3000);
                 choosenGiphys = {
                     name: "",
                     urls: []
                     };
-                   
-        } else if (favoriteGiphysBank.characterNames.includes(choosenGiphys.name)){
+        } else if ( favoriteGiphysBank.characterNames.includes(choosenGiphys.name) ) {
             // if(favoriteGiphysBank.storedGiphys[favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name)].length < 12 ){
                 favoriteGiphysBank.characterNames.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name),1);
                 favoriteGiphysBank.storedGiphys.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name),1)
@@ -220,21 +217,18 @@ $(".save-fav").on("click", function(){
                 favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
                 localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
                 $(".save-fav").remove();
+                $(".giphy-div").empty();
+                $(".giphy-div").remove();
+                $("#save-message")
+                .text("You Have Saved " + choosenGiphys.urls.length + " " + choosenGiphys.name + " Giphys to your Favorites")
+                .fadeIn(2000);
+                $("#save-message").fadeOut(3000);
                 choosenGiphys = {
                     name: "",
                     urls: []
                     };
         }
-
-
 console.log(favoriteGiphysBank)
-
     }
-
-    
-
 })
-    
-
-
 }

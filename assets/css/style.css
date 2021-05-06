@@ -34,6 +34,9 @@ body {
   font-weight: 700;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 .bigGiphyDiv {
   left: 20%;
   right: 20%;
@@ -72,7 +75,7 @@ body {
   align-items: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   height: 200px;
 }
@@ -323,6 +326,12 @@ body {
   -webkit-filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
   filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
   cursor: -webkit-grab;
+}
+
+#save-message {
+  color: #e6e6e6;
+  text-shadow: 5px 5px 5px rgb(0, 0, 0);
+  font-size: 24px;
 }
 
 .giphy-div:hover {
