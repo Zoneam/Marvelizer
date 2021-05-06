@@ -1,4 +1,3 @@
-
 $(document).foundation();
 let searchInput;
 let favCount;
@@ -8,11 +7,6 @@ let choosenGiphys = {
     urls: []
 };
 
-let favoriteGiphysBank = {
-    characterNames: [],
-    storedGiphys: []
-}
-
 $("#search-button").on("click", function(event){
     event.preventDefault();
     searchInput =  $("#search-input").val();
@@ -21,7 +15,7 @@ $("#search-button").on("click", function(event){
         if (response.status == 200) {
             response.json().then(function (data) {
                 if(data.data.count !== 0){
-                    console.log("CharacterData: " , data);
+                    // console.log("CharacterData: " , data);
                     displayInfo(data)
                     let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=80&offset=0&rating=g&lang=en`
                     fetch(giphyApi).then(function(giphyData){
@@ -117,6 +111,10 @@ function displayGiphys(giphyData){
             $(".giphy-div").empty();
             $(".giphy-div").remove();
         }  
+        $("<img>")
+        .addClass("save-fav")
+        .attr("src","./assets/images/save.png")
+        .appendTo(document.body)
         let bigGiphyDiv =  $("<div>")
         .addClass("bigGiphyDiv")
         .appendTo(document.body)
@@ -135,12 +133,12 @@ function displayGiphys(giphyData){
         })
     }
     addClickListenerBigGiphys();
+    addListenerOnSticky();
 }
 
 // add click listener for giphys
 function addClickListenerBigGiphys() {
     $(".giphy-div").click(function(event) {
-        console.log("len",$(".small-images-div").children().length) //--------------------
         if(addListener === true){
             clickListenerSmllGiphys();
             favCount = 12;
@@ -151,9 +149,8 @@ function addClickListenerBigGiphys() {
     if ($(".small-images-div").children().length < 12 ){
          $(".small-images-div").children().each(function(){
             if(sourceGif === $(this).attr('src')) {
-                console.log("Matches")
+                // console.log("Matches")
                 $(this).remove();
-                
             } 
         })
         if(!choosenGiphys.urls.includes(sourceGif)) {
@@ -167,7 +164,7 @@ function addClickListenerBigGiphys() {
         .attr("src", $(this).children('img').attr('src'))
         .appendTo($(".small-images-div"))
     }
-    console.log(choosenGiphys)
+    // console.log(choosenGiphys)
     })
 }
 // click listener for favorite
@@ -185,4 +182,53 @@ function clickListenerSmllGiphys(){
     }))
 }
 
+// add click listener and save lo local storage on sticky button
 
+
+function addListenerOnSticky(){
+    $("#save-message").fadeOut(0);
+$(".save-fav").on("click", function(){
+    let favoriteGiphysBank;
+    if ($(".small-images-div").children().length != 0 ){
+        $(".small-images-div").children().each(function(){
+            $(this).remove();
+        })
+        favoriteGiphysBank = JSON.parse( localStorage.getItem("Marvelizer") ) || { characterNames: [], storedGiphys: [] };
+        if( !favoriteGiphysBank.characterNames.includes(choosenGiphys.name) ) {
+                favoriteGiphysBank.characterNames.unshift(choosenGiphys.name);
+                favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
+                localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
+                $(".save-fav").remove();
+                $(".giphy-div").empty();
+                $(".giphy-div").remove();
+                $("#save-message")
+                .text("You Have Saved " + choosenGiphys.urls.length + " " + choosenGiphys.name + " Giphys to your Favorites")
+                .fadeIn(2000);
+                $("#save-message").fadeOut(3000);
+                choosenGiphys = {
+                    name: "",
+                    urls: []
+                    };
+        } else if ( favoriteGiphysBank.characterNames.includes(choosenGiphys.name) ) {
+            // if(favoriteGiphysBank.storedGiphys[favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name)].length < 12 ){
+                favoriteGiphysBank.characterNames.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name),1);
+                favoriteGiphysBank.storedGiphys.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name),1)
+                favoriteGiphysBank.characterNames.unshift(choosenGiphys.name);
+                favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
+                localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
+                $(".save-fav").remove();
+                $(".giphy-div").empty();
+                $(".giphy-div").remove();
+                $("#save-message")
+                .text("You Have Saved " + choosenGiphys.urls.length + " " + choosenGiphys.name + " Giphys to your Favorites")
+                .fadeIn(2000);
+                $("#save-message").fadeOut(3000);
+                choosenGiphys = {
+                    name: "",
+                    urls: []
+                    };
+        }
+console.log(favoriteGiphysBank)
+    }
+})
+}
