@@ -9,12 +9,13 @@ body {
 }
 
 .save-fav {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 100px;
-  width: 40px;
-  margin-left: 30px;
+  /* position: -webkit-sticky; */
+  position: relative;
 
+  margin-left: 30px;
+  /* bottom: 0px; */
+  top: 440px;
+  width: 50px;
   background-color: transparent;
 }
 
@@ -200,6 +201,10 @@ html {
   font-size: 1.5rem;
 }
 
+#search-input {
+  text-transform: capitalize;
+}
+
 .card-user-profile-button {
   margin-bottom: 0;
   -webkit-flex: 1 0 0;
@@ -349,8 +354,9 @@ html {
 .small-images-div {
   width: 400px;
   flex-wrap: wrap;
-  height: auto;
+  height: fit-content;
   margin: 0 auto;
+  margin-top: 15px;
   background-color: transparent;
   display: flex;
   border: dashed;
