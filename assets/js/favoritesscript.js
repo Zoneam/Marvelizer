@@ -15,30 +15,32 @@ function displaySearchNames() {
         .addClass("search-name")
         .appendTo(".search-list");
         searchLi.text(names[i]); 
+    } 
+    } else {
+      let noGifMessage = $("<p>")
+        .addClass("no-gif-message")
+        .appendTo($("#navArea"));
+      noGifMessage.text("No Giphys have been chosen as favorites. Use the MARVELizer search page to select favorites.");
     }
-  }
 }
 
 function displayGifs(clickedName) {
-  if ($(".bigGiphyDiv").length){
-    $(".bigGiphyDiv").empty();
-    $(".bigGiphyDiv").remove();
+  if ($(".gif-area").length){
+    $(".gif-area").empty();
     }  
+
   for (let i = 0; i < existingEntries.length; i++) {
     if (existingEntries[i].name == clickedName) {
       console.log(existingEntries[i].name);
       var gifUrl = existingEntries[i].url;
-      let bigGiphyDiv =  $("<div>")
-          .addClass("bigGiphyDiv")
+      
+      let gifColumnDiv = $("<div>")
+          .addClass("column gif-div card")
           .appendTo($(".gif-area"));
-      let secondtGiphyDiv = $("<div>")
-          .addClass("giphy-div card card-select")
-          .appendTo(bigGiphyDiv);
       $("<img>")
-          .addClass("giphys")
-          .attr("data-toggle","tooltip")
+          .addClass("thumnail")
           .attr("src", gifUrl)
-          .appendTo(secondtGiphyDiv)
+          .appendTo(gifColumnDiv);
     }
   }
 }
