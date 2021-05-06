@@ -17,7 +17,7 @@ $("#search-button").on("click", function(event){
                 if(data.data.count !== 0){
                     // console.log("CharacterData: " , data);
                     displayInfo(data)
-                    let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=80&offset=0&rating=g&lang=en`
+                    let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=30&offset=0&rating=g&lang=en`
                     fetch(giphyApi).then(function(giphyData){
                         if (giphyData.status == 200){
                             giphyData.json().then(function (giphyData) { 
@@ -61,14 +61,7 @@ function displayInfo(rawData){
         let firstDiv= $("<div>")
                 .addClass("about-the-author")
                 .appendTo(document.body)
-
-        if(!$(".save-fav").length){
-                $("<img>")
-                .addClass("save-fav")
-                .attr("src","./assets/images/save.png")
-                .appendTo(firstDiv)
-                }
-
+        //-----
         let secondDiv =$("<div>")
                 .addClass("row")
                 .appendTo(firstDiv)
@@ -94,6 +87,8 @@ function displayInfo(rawData){
                 $("<div>")
                 .addClass("small-12 columns small-images-div")
                 .appendTo(secondDiv)
+
+                
         let heroTitle = $(".author-title");
         let heroDescription = $("#description");
         heroTitle.text(rawData.data.results[0].name);
@@ -137,6 +132,10 @@ function displayGiphys(giphyData){
                 y++;
         })
     }
+
+
+            // $(".save-fav").toggle();
+
     addClickListenerBigGiphys();
     addListenerOnSticky();
 }
@@ -189,10 +188,11 @@ function clickListenerSmllGiphys(){
 
 // add click listener and save lo local storage on sticky button
 function addListenerOnSticky(){
-    $("#save-message").fadeOut(0);
+    // $("#save-message").fadeOut(0);
 $(".save-fav").on("click", function(){
     let favoriteGiphysBank;
     if ($(".small-images-div").children().length != 0 ){
+        // $( ".save-fav" ).hide();
         $(".small-images-div").children().each(function(){
             $(this).remove();
         })
@@ -209,7 +209,8 @@ $(".save-fav").on("click", function(){
                 favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
                 localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
         }
-        $(".save-fav").remove();
+        // $(".save-fav").remove();
+        
         $(".giphy-div").empty();
         $(".giphy-div").remove();
         $("#save-message")
