@@ -84,9 +84,22 @@ function displayInfo(rawData){
                 $("<p>")
                 .attr("id", "description")
                 .appendTo(pDiv)
-                $("<div>")
-                .addClass("small-12 columns small-images-div")
+
+            let divwrapsmallimages = $("<div>")
+                .addClass("divWrap-Small-Images small-12 columns")
                 .appendTo(secondDiv)
+                
+                $("<div>")
+                .addClass(" small-images-div")
+                .appendTo(divwrapsmallimages)
+                $("<span>")
+                .attr("id","save-message")  //----new
+                .text("Save to favorites")
+                .appendTo(divwrapsmallimages)
+                $("<img>")
+                .addClass("save-fav")
+                .attr("src", "./assets/images/save.png")
+                .appendTo(divwrapsmallimages)
 
                 
         let heroTitle = $(".author-title");
@@ -210,7 +223,6 @@ $(".save-fav").on("click", function(){
                 localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
         }
         // $(".save-fav").remove();
-        
         $(".giphy-div").empty();
         $(".giphy-div").remove();
         $("#save-message")

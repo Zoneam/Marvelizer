@@ -20,8 +20,6 @@
 
 <body>
 
-
-
     <header class="subnav-hero-section">
         <h1 class="subnav-hero-headline">MARVEL<small style="color: rgb(15, 24, 14);">izer</small></h1>
         <div class="input-group input-group-rounded">
@@ -31,17 +29,20 @@
             </div>
         </div>
         <div id="infobar">
-            <img class="save-fav" src="./assets/images/save.png" alt="Save">
-            <span id="save-message"></span>
-            <a href="./favoritesPage.html"><img id="favorites" src="./assets/images/premium-quality.png"
-                    alt="favorites"></a>
+            <div>
+
+
+                <a href="./favoritesPage.html"><img id="favorites" src="./assets/images/premium-quality.png"
+                        alt="favorites"></a>
+            </div>
+            <!-- <span id="save-message"></span> -->
         </div>
     </header>
 
     <!--                  Modals               -->
     <div class="reveal" id="modalBadRequest" data-reveal>
-        <h1>Bad Request</h1>
-        <p class="lead">Your couch. It is mine.</p>
+        <h2>Character No Name? Hmmm..</h2>
+        <p class="lead">Sounds like a good idea. But not available yet.</p>
         <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -56,7 +57,7 @@
 
     <div class="reveal" id="Nothing-Found" data-reveal>
         <h1>Nothing Found</h1>
-        <p class="lead">Please enter correnct character name</p>
+        <p class="lead">Please enter correct character name</p>
         <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
