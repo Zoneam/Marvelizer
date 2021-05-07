@@ -131,7 +131,8 @@ html {
   scroll-behavior: smooth;
 }
 
-.bigGiphyDiv {
+.bigGiphyDiv,
+.bigGiphyDivFav {
   left: 20%;
   right: 20%;
   width: 1300px;
@@ -153,9 +154,9 @@ html {
   /* margin: 2px auto; */
 }
 
-.giphys {
-  height: -webkit-fill-available;
-}
+/* .giphys,
+.giphysfav {
+} */
 .subnav-hero-section {
   text-align: center;
   background: #323a3f;
@@ -425,7 +426,9 @@ html {
   text-shadow: 4px 1px 6px rgb(0, 0, 0);
   font-size: 24px;
 }
-
+.gif-area {
+  width: fit-content;
+}
 .giphy-div:hover {
   cursor: -webkit-grab;
   padding: 10px;
@@ -439,12 +442,15 @@ html {
 }
 .search-name {
   cursor: -webkit-grab;
+  text-transform: capitalize;
 }
 
 .giphy-div:not(:hover) {
   transition: 0.4s ease;
 }
-
+.giphy-divFav {
+  height: fit-content;
+}
 .small-images-div {
   width: 400px;
   flex-wrap: wrap;
