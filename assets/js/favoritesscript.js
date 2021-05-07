@@ -24,14 +24,16 @@ function displayGifs(clickedId) {
   if ($(".gif-area").length){
     $(".gif-area").empty();
     }  
+
   for (let i = 0; i < existingEntries.storedGiphys[clickedId].length; i++) {
-    let gifColumnDiv = $("<div>")
-        .addClass("column gif-div card")
-        .appendTo($(".gif-area"));
-    $("<img>")
-        .addClass("thumnail")
-        .attr("src", existingEntries.storedGiphys[clickedId][i])
-        .appendTo(gifColumnDiv);
+   let gifColumnDiv = $("<div>")
+          .addClass("giphy-div card card-select")
+          .appendTo($(".gif-area"));
+      $("<img>")
+          .addClass("giphys")
+          .attr("src", gifUrl)
+          .appendTo(gifColumnDiv);
+
   }
 }
 
