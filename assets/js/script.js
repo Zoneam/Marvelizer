@@ -7,6 +7,7 @@ let choosenGiphys = {
     urls: []
 };
 
+
 //-------------------- Random character search
 $("#lucky-button").on("click",function(event){
     let offset = Math.floor(Math.random() * 1492)
