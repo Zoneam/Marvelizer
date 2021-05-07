@@ -60,7 +60,7 @@ function apiFetch() {
                 if(data.data.count !== 0){
                     // console.log("CharacterData: " , data);
                     displayInfo(data)
-                    let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=30&offset=0&rating=g&lang=en`
+                    let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=60&offset=0&rating=g&lang=en`
                     fetch(giphyApi).then(function(giphyData){
                         if (giphyData.status == 200){
                             giphyData.json().then(function (giphyData) { 
@@ -121,7 +121,7 @@ function displayInfo(rawData){
                 .attr("src", rawData.data.results[0].thumbnail.path + ".jpg")
                 .appendTo(fourthDiv)
         let pDiv = $("<div>")
-                .addClass("small-12 medium-4 columns")
+                .addClass("small-12 medium-8 columns")
                 .appendTo(secondDiv)
                 $("<h4>")
                 .addClass("separator-left author-title")
