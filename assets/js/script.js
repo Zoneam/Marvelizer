@@ -2,13 +2,12 @@ $(document).foundation();
 let searchInput;
 let favCount;
 let addListener;
-// let luckyCharacterName;
 let choosenGiphys = {
     name: "",
     urls: []
 };
 
-
+//-------------------- Random character search
 $("#lucky-button").on("click",function(event){
     let offset = Math.floor(Math.random() * 1492)
     // console.log(offset)
