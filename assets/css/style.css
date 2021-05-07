@@ -24,7 +24,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
 }
 
@@ -41,10 +41,9 @@ body {
   background-color: transparent;
 }
 #favorites {
-  width: 50px;
   /* position: relative; */
   align-self: flex-end;
-  margin-right: 50px;
+  margin-right: 5px;
 }
 
 .spanClass {
