@@ -139,14 +139,11 @@ function displayInfo(rawData){
                 .appendTo(divwrapsmallimages)
                 $("<span>")
                 .attr("id","save-message")  //----new
-                .text("Save to favorites")
                 .appendTo(divwrapsmallimages)
                 $("<img>")
                 .addClass("save-fav")
                 .attr("src", "./assets/images/save.png")
-                .appendTo(divwrapsmallimages)
-
-                
+                .appendTo(divwrapsmallimages)      
         let heroTitle = $(".author-title");
         let heroDescription = $("#description");
         heroTitle.text(rawData.data.results[0].name);
@@ -218,6 +215,7 @@ function addClickListenerBigGiphys() {
         if(!choosenGiphys.urls.includes(sourceGif)) {
             favCount--;
             $(".giphys").attr("title", favCount + "  Left")
+            $("#save-message").text("Save " + `${ Math.abs(favCount - 12) }` + " Giphys to Favorites")
             choosenGiphys.urls.unshift(sourceGif);
         }
         // choosenGiphys.urls.unshift($(this).children('img').attr('src'))
@@ -235,6 +233,7 @@ function clickListenerSmllGiphys(){
                favCount++;
                $(".giphys").attr("title", favCount + "  Left")
         $(".spanClassNumber").text(favCount + "  Left")
+        $("#save-message").text("Save " + `${ Math.abs(favCount - 12) }` + " Giphys to Favorites")
         choosenGiphys.urls.forEach(element => {
           if (element == $(this).attr('src')) {
             choosenGiphys.urls.splice(choosenGiphys.urls.indexOf(element.trim()) , 1 );

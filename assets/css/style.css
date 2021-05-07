@@ -150,6 +150,7 @@ html {
   box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
   overflow: hidden;
   background-color: transparent;
+  /* margin: 2px auto; */
 }
 
 .giphys {
@@ -408,15 +409,6 @@ html {
   border: 1px solid #cacaca;
 }
 
-.giphy-div:not(:hover) {
-  transition: 0.4s ease;
-  border-radius: 2px;
-  /* box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%); */
-  margin: 0px;
-
-  /* zoom: 100%; */
-}
-
 .save-fav:hover {
   transition: 0.3s ease;
   border-radius: 1px;
@@ -436,14 +428,18 @@ html {
 
 .giphy-div:hover {
   cursor: -webkit-grab;
-  transition: 0.4s ease;
+  padding: 10px;
+  transition: 0.4s cubic-bezier(0, 0, 0, 3.07);
   border-radius: 3px 20px 3px 20px;
-  border-width: 3px;
-  /* box-shadow: 0px 0px 22px 8px #ffef00; */
+  border-width: 2px;
   border-color: #ff7b00;
-  margin: 15px;
+  /* margin: 15px; */
   border-color: #fa6711;
-  box-shadow: 0px 0px 11px 5px rgba(255, 131, 0, 0.7);
+  box-shadow: 0px 0px 11px 5px rgb(255 131 0 / 70%);
+}
+
+.giphy-div:not(:hover) {
+  transition: 0.4s ease;
 }
 
 .small-images-div {
@@ -456,6 +452,10 @@ html {
   display: flex;
   border: dashed;
   width: -webkit-fill-available;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 640px) {
@@ -473,20 +473,10 @@ html {
     height: 50px;
   }
 
-  .giphy-div {
-    margin: 2px auto;
-    width: 80px;
-    overflow: hidden;
-  }
   header {
     height: 40px;
   }
-  .small-images-div {
-    justify-content: center;
-    width: 100%;
-    height: fit-content;
-    flex-wrap: wrap;
-  }
+
   .save-fav {
     align-self: center;
     /* width: 28px; */
