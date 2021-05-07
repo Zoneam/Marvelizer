@@ -1,13 +1,13 @@
 ## Project MARVELizer
 
-The MARVELizer is a web app that enables the user to search for a Marvel character view information and GIFs related to the character, and save favorite GIFs. The search queries the Marvel API for the character’s description and a thumbnail, and it then uses the character name to query the GIPHY API for the top 25 GIFs related to the character.
+The MARVELizer is a web app that enables you to search for a Marvel character, view information and Giphys related to the character, and save favorite Giphys. The search feature queries the Marvel API for a character’s description and a thumbnail, and it uses the character name to query the Giphy API for the Giphys related to the character.
 
-This was our first group assignment, and gave the team more experience developing with third-party server-side APIs, as well as web development and team development in general.
+Published site: [https://zoneam.github.io/Marvelizer/](https://zoneam.github.io/Marvelizer/)
 
 User story:
   AS A Marvel enthusiast,
-  I WANT to search for information about and GIFs of my favorite characters
-  SO THAT I can read about Marvel characters and collect my favorite GIFs.
+  I WANT to get information and Giphys for Marvel characters 
+  SO THAT I can read about Marvel characters and collect my favorite Giphys of that character.
 
 Technologies used: 
 * Foundation
@@ -16,25 +16,24 @@ Technologies used:
 * local storage
 * Git and GitHub
 
-Tasks and roles: 
-* All - Contributed to ideas, researched APIs, work with Hayk as he shared screen
-* Hayk Mnatsakanyan- Created GitHub repo, did most screen sharing and coding during programming sessions, created initial search page, did API code, and more.
-* Beau Barrier- Did Foundation component/template research and development, created the initial Favorites page, contributed to group programming sessions.
-* Gerome Guevarra - Researched APIs,contributed to ideas for general concept, contributed to group programming sessions, etc. 
-* Matt Linder - Researched APIs, contributed to concept and design, did Foundation component research and development, created presentation (slides), wrote readme, contributed to group programming sessions, etc.
+This was our first group assignment, and gave the team more experience developing with third-party APIs, as well as significantly more experience developing web apps as a team.
 
-Challenges: Foundation components never worked as advertised, and the team had to concurrently working on thier individual weather dashboard apps.
+All team members contributed to ideas, researched APIs, and contributed to shared-screen development sessions. Additionally, individual contributions include
+* Hayk Mnatsakanyan - Created GitHub repo and handled pull requests, lead shared-screen development sessions, was largely responsible for the search page and API calls, and more.
+* Beau Barrier - Did Foundation component/template research and development, created the initial Favorites page, added background images and other visual design improvements.
+* Gerome Guevarra - Researched APIs, contributed ideas for general concept, contributed to shard-screen development sessions. 
+* Matt Linder - Researched APIs, contributed to concept, did Foundation component research and development, created slides for presentation, wrote readme, wrote first version of favorites-saving code, reworked Favorites page.
 
-Successes: We met requirements (working app that queries two APIs), we worked well as a team, and welearned from each other and the assignment.
+Challenges: Foundation components frequently had issues, we were concurrently developing weather dashboard apps (homework), we had to familiarize ourselves with some Git workflows related to team development, and we had to divide up the work and write code that worked with other team members' code.
+
+Successes: We met the requirements (a working app that queries two APIs), we learned to work better as a team, and we got more experience working with APIs and web development in general.
 
 Directions for Future Development:
-* Enable users to remove items from favorites????
-* More work on look of web app????
-* Enable users to page through multiple pages of returned GIFs????
+* Enable users to remove items from favorites
+* Display more information from API
+* When favorite Giphys are saved for a character, these should be added to the set of Giphys previously saved for the character (not overwrite them)
 
-Links:
-* <GitHub site>
-* [Published site](https://zoneam.github.io/Marvelizer/)
-* <Marvel API site>
-* <Giphy API site>
-* <Foundation site>
+Other links:
+* [Marvel Developer Portal (API site)](https://developer.marvel.com/)
+* [Giphy API site](https://developers.giphy.com/docs/api)
+* [Foundation site (ZURB foundation)](https://get.foundation/)
