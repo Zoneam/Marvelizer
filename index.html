@@ -19,6 +19,9 @@
 </head>
 
 <body>
+
+
+
     <header class="subnav-hero-section">
         <h1 class="subnav-hero-headline"><img src="./assets/images/marvelizerFrontPage.png" width="400px"
                 height="200px"><small style="color: rgb(15, 24, 14);">izer</small></h1>
@@ -28,10 +31,8 @@
                 <input type="submit" class="button secondary" id="search-button" value="Search">
             </div>
         </div>
+        <span id="save-message"></span>
     </header>
-
-
-
 
     <!--                  Modals               -->
     <div class="reveal" id="modalBadRequest" data-reveal>
@@ -42,21 +43,20 @@
         </button>
     </div>
     <div class="reveal" id="modalWrongCharacterName" data-reveal>
-        <h1>Character doesn't exist.</h1>
-        <p class="lead">Please enter a valid character name.</p>
+        <h1>No Such a Character</h1>
+        <p class="lead">Please enter correct character name</p>
         <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
     <div class="reveal" id="Nothing-Found" data-reveal>
-        <h1>We can't find that character...</h1>
-        <p class="lead">Please enter a valid Marvel character name.</p>
+        <h1>Nothing Found</h1>
+        <p class="lead">Please enter correnct character name</p>
         <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
         integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>

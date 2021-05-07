@@ -1,25 +1,115 @@
-/* sets background image for both pages -bb*/
+/* bb_sets background image for both pages */
 body {
   background-image: url("../../assets/images/marvelherobackground.png");
 }
 /* background image for favoritesPage nav aside -bb */
-#sideBar{
+#primary{
   background-image: url("../images/thorSidebarBackgroundImg.png");
 } 
 
 .small-image {
-  width: 25%;
-  margin: 2px;
+  width: 7%;
+  margin: 7px;
   box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
 }
-.small-images-div {
-  width: 400px;
-  flex-wrap: wrap;
-  height: auto;
-  margin: 0 auto;
+
+.save-fav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  width: 40px;
+  margin-left: 30px;
+
   background-color: transparent;
-  display: flex;
 }
+
+.spanClass {
+  left: 150px;
+  position: relative;
+  /* width: 200px; */
+  font-size: larger;
+  font-weight: 700;
+}
+
+.spanClassNumber {
+  left: 170px;
+  position: relative;
+  /* width: 200px; */
+  font-size: larger;
+  font-weight: 700;
+}
+
+
+/* Favorites page styles  */
+.search-list {
+  list-style-type: none;
+  margin: auto;
+}
+
+.no-gif-message {
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  width: 70%;
+  text-align: center;
+  margin:auto;
+}
+
+.search-list li {
+  color: darkgray;
+  background-color: white;
+  padding: 6px;
+  margin-top: 3px;
+  text-align: center;
+  width: 100%;
+}
+
+#primary{
+  float: left;
+  width: 25%;
+  min-width: 80px;
+  /* padding-right: 1em; */
+  background-color: #323a3f;
+  height: 100%;
+  text-align: center;
+}
+
+#secondary{
+  float: right;
+  width: 75%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* justify-content: space-between; */
+}
+
+#navArea{
+  /* margin-left: 15px; */
+  margin: auto;
+  display: inline-block;
+}
+
+.gif-div {
+  margin-left: 10px;
+  max-width: 300px;
+  max-height: 300px;
+  /* display: inline-block; */
+  /* box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%); */
+  overflow: hidden;
+  background-color: transparent;
+  margin: 10px;
+  float: left;
+  border: none;
+}
+.column:last-child{
+  float: left;
+ }
+/* End favorites page styles  */
+
+
+html {
+  scroll-behavior: smooth;
+}
+
 .bigGiphyDiv {
   left: 20%;
   right: 20%;
@@ -58,7 +148,7 @@ body {
   align-items: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   height: 200px;
 }
@@ -79,7 +169,7 @@ body {
 .input-group-rounded .input-group-button .button {
   border-radius: 0 5000px 5000px 0;
   font-size: 0.8rem;
-  height: inherit;
+  height: 40px;
 }
 
 .input-group {
@@ -302,6 +392,21 @@ body {
   /* zoom: 100%; */
 }
 
+.save-fav:hover {
+  transition: 0.1s ease;
+  border-radius: 1px;
+  /* box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%); */
+  -webkit-filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
+  filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
+  cursor: -webkit-grab;
+}
+
+#save-message {
+  color: #e6e6e6;
+  text-shadow: 5px 5px 5px rgb(0, 0, 0);
+  font-size: 24px;
+}
+
 .giphy-div:hover {
   cursor: -webkit-grab;
   transition: 0.4s ease;
@@ -314,46 +419,54 @@ body {
   box-shadow: 0px 0px 11px 5px rgba(255, 131, 0, 0.7);
 }
 
+.small-images-div {
+  width: 400px;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 0 auto;
+  background-color: transparent;
+  display: flex;
+  border: dashed;
+  width: -webkit-fill-available;
+}
+
 @media (max-width: 750px) {
   .bigGiphyDiv {
     left: 3%;
     right: 3%;
-    width: 300px;
+    width: 80%;
+    height: fit-content;
+    flex-wrap: wrap;
+  }
+  .giphys {
+    width: 100px;
+  }
+  .small-image {
+    height: 50px;
   }
 
   .giphy-div {
     margin: 2px auto;
-    width: 100px;
+    width: 80px;
+    overflow: hidden;
+  }
+  header {
+    height: 40px;
   }
   .small-images-div {
+    justify-content: center;
     width: 100%;
+    height: fit-content;
+    flex-wrap: wrap;
+  }
+  .save-fav {
+    margin-left: 5px;
+    width: 28px;
   }
 }
 
-/* favorites counter -bb */
-.dashboard-number-card {
-  background: rgb(143, 135, 135);
-  border-radius: 5px;
-  margin: 0 20px 20px;
-  position: relative;
-  height: 50px;
-  width:200px;
+@media print, screen and (min-width: 40em) {
+  .medium-4 {
+    width: 32.33333%;
+  }
 }
-
-.dashboard-number-value {
-  color: #f13e3e;
-  font-size: 22px;
-  font-weight: 800;
-  padding: .7rem 2rem 1.75rem;
-  text-align: right;
-}
-
-.dashboard-number-area {
-  bottom: 12px;
-  color: #ffffff;
-  font-size: 13px;
-  left: 8px;
-  margin-bottom: 0;
-  position: absolute;
-}
-/* end favorites counter */
