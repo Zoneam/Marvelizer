@@ -458,7 +458,7 @@ html {
   width: -webkit-fill-available;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 640px) {
   .bigGiphyDiv {
     left: 3%;
     right: 3%;
@@ -494,9 +494,18 @@ html {
   #save-message {
     font-size: 12px;
   }
+  .input-group-button {
+    width: 25%;
+  }
+  .author-title {
+    margin-top: 5px;
+  }
+  .subnav-hero-section {
+    height: 150px;
+  }
 }
 
-@media print, screen and (min-width: 40em) {
+@media print, screen and (min-width: 640px) {
   .medium-4 {
     width: 32.33333%;
   }
