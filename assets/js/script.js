@@ -2,14 +2,57 @@ $(document).foundation();
 let searchInput;
 let favCount;
 let addListener;
+// let luckyCharacterName;
 let choosenGiphys = {
     name: "",
     urls: []
 };
 
+
+$("#lucky-button").on("click",function(event){
+    let offset = Math.floor(Math.random() * 1492)
+    // console.log(offset)
+    searchInput ="";
+    let i=0;
+    let luckyApi = `https://gateway.marvel.com/v1/public/characters?limit=10&offset=${ offset }&ts=1&apikey=2ef8d58d6e4c1a6eb9fe640436563e2c&hash=4b46213c75452f9fc065e74ea4d8d2d3`;
+    fetch(luckyApi).then(function(response){
+        if (response.status == 200) {
+            response.json().then(function (data) {
+                if(data.data.count !== 0){
+                    console.log(data)
+                    for(let i =0; i<=data.data.results.length - 1;i++){
+                        console.log(i)
+                        //----- Minimizing results with no description or picture
+                        if(data.data.results[i].description != "" && data.data.results[i].thumbnail.path != "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
+                            searchInput = data.data.results[i].name;
+                            console.log("searchinput ++", searchInput)
+                            apiFetch();
+                            break;   
+                        }
+                        if (data.data.results[i].description != "" || data.data.results[i].thumbnail.path != "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
+                            searchInput = data.data.results[i].name;
+                            console.log("searchinput --", searchInput)
+                        } 
+                        if (i == data.data.results.length - 1 && searchInput == "") {
+                            searchInput = data.data.results[0].name;
+                        }
+                        console.log(searchInput)
+                    }
+                    apiFetch();
+                }
+            })
+        }
+    }) 
+})
+
+
 $("#search-button").on("click", function(event){
     event.preventDefault();
     searchInput =  $("#search-input").val();
+    apiFetch();
+})
+
+function apiFetch() {
     let apiLink = `https://gateway.marvel.com/v1/public/characters?name=${ searchInput }&ts=1&apikey=2ef8d58d6e4c1a6eb9fe640436563e2c&hash=4b46213c75452f9fc065e74ea4d8d2d3`
     fetch(apiLink).then(function(response){
         if (response.status == 200) {
@@ -46,7 +89,9 @@ $("#search-button").on("click", function(event){
     .catch(function(){
         $('#modalBadRequest').foundation("open");
     })
-})
+}
+
+
 
 function displayInfo(rawData){
     // console.log(rawData)
