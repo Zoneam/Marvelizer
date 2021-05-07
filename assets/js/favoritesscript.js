@@ -7,6 +7,7 @@ function displaySearchNames() {
     for (let i =  0; i < existingEntries.characterNames.length; i++) {
       let searchLi = $("<li>")
         .addClass("search-name")
+        .attr("text-transform", "capitalize")
         .attr("id", i)
         .appendTo(".search-list");
       searchLi.text(existingEntries.characterNames[i]); 
@@ -22,19 +23,33 @@ function displaySearchNames() {
 
 function displayGifs(clickedId) {
   if ($(".gif-area").length){
-    $(".gif-area").empty();
-    }  
+      $(".gif-area").empty();
+      }  
 
-  for (let i = 0; i < existingEntries.storedGiphys[clickedId].length; i++) {
-   let gifColumnDiv = $("<div>")
-          .addClass("giphy-div card card-select")
+    for (let i = 0; i < existingEntries.storedGiphys[clickedId].length; i++) {
+        let gifColumnDiv = $("<div>")
+          .addClass("giphy-div giphy-divFav card card-select")
           .appendTo($(".gif-area"));
-      $("<img>")
-          .addClass("giphys")
-          .attr("src", gifUrl)
+            $("<img>")
+          .addClass("giphysfav")
+          .attr("src", existingEntries.storedGiphys[clickedId][i])
           .appendTo(gifColumnDiv);
 
   }
+}
+
+function addListeneronGiphys() {
+$(".giphysfav").on("click", function(e){
+e.preventDefault();
+let copyLink = $(this).attr("src")
+    const el = document.createElement('textarea');
+    el.value = copyLink;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+ 
+})
 }
 
 displaySearchNames()
@@ -52,4 +67,5 @@ listClickEl.on("click", function(event){
   $(event.target)
     .css("backgroundColor", "red")
     .css("color", "white");
+    addListeneronGiphys()
 })
