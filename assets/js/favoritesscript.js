@@ -35,10 +35,10 @@ function displayGifs(clickedName) {
       var gifUrl = existingEntries[i].url;
       
       let gifColumnDiv = $("<div>")
-          .addClass("column gif-div card")
+          .addClass("giphy-div card card-select")
           .appendTo($(".gif-area"));
       $("<img>")
-          .addClass("thumnail")
+          .addClass("giphys")
           .attr("src", gifUrl)
           .appendTo(gifColumnDiv);
     }
