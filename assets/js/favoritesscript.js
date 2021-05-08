@@ -1,7 +1,6 @@
 var names = [];
 var existingEntries = JSON.parse(localStorage.getItem("Marvelizer"));
 var namePositionArray = []
-var trigger = true;
 
 function displaySearchNames() {
   if (existingEntries !== null) {
@@ -20,8 +19,7 @@ function displaySearchNames() {
     noGifMessage.text("No Giphys have been chosen as favorites. Use the MARVELizer search page to select favorites.");
   }
 }
-//need to find a way too assign each GIF an individual identifier.
-//I need each GIF when clicked to change the #embedUrlText value to the URL
+
 function displayGifs(clickedId) {
   trigger = true;
   if ($(".gif-area").length) {
@@ -35,14 +33,10 @@ function displayGifs(clickedId) {
       .addClass("thumbnail")
       .attr("src", existingEntries.storedGiphys[clickedId][i])
       .appendTo(gifColumnDiv);
-
-
   }
 }
-
 displaySearchNames()
 
-// event listener for list item clicks
 let listClickEl = $(".search-name");
 listClickEl.on("click", function (event) {
   event.preventDefault();
@@ -57,33 +51,24 @@ listClickEl.on("click", function (event) {
     .css("color", "white");
 })
 
-var trigger = true;
 
-// event listiner for GIF image clicks -bb
 let gifClickEl = $(".gif-area");
-
-
 gifClickEl.on("click", (function (event) {
-  if (trigger === true) {
-
-    var removeMe = $(".embedUrlText")
-    removeMe.empty();
-    event.preventDefault();
-    // function generateEmbedLink() {
-
-    gifData = JSON.parse(localStorage.getItem("Marvelizer"))
-    console.log(gifData)
-    // forEach???
-    $("<input>")
-      .addClass("embedUrlText")
-      .val("<img src='" + gifData.storedGiphys[0][1] + "'>")
-      .prop('readonly', true)
-      .appendTo(".gif-area");
-    trigger = false;
-
-    // stringGifData = JSON.stringify(localStorage.getItem("Marvelizer"))
-    // console.log(stringGifData)
-  }
+  document.getElementById("URLinput").style.display = "initial";
+  document.getElementById("copyUrlButton").style.display = "initial";
+  $("#URLinput")
+    .val("<img src='" + event.target.src + "'>");
 }))
+
+let copyUrlButton = $("#copyUrlButton")
+copyUrlButton.on("click", (function copyToClipboard() {
+  var gifURL = document.getElementById("URLinput");
+  gifURL.select();
+  gifURL.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Copied the URL: " + gifURL.value);
+}))
+
+
 
 

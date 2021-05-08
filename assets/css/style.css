@@ -1,26 +1,29 @@
-/* bb_sets background image for both pages */
+
 body {
   background-image: url("../../assets/images/marvelherobackground.png");
+  justify-content: left;
 }
-/* background image for favoritesPage nav aside -bb */
-#primary{
-  background-image: url("../images/thorSidebarBackgroundImg.png");
-} 
-
-.small-image {
-  width: 7%;
-  margin: 7px;
-  box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
+#URLinput{
+  width:500px;
+  height: 40px;
+  float:right;
+  display:none;
+}
+#copyUrlButton {
+  float:right;
+  position: relative;
+  height: 40px;
+  display: none;
+ background-color: rgb(108, 140, 161);
+ color: white;
 }
 
-.save-fav {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 100px;
-  width: 40px;
-  margin-left: 30px;
+#instructionsDiv{
+  background: rgb(108, 140, 161);
+  height: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
 
-  background-color: transparent;
 }
 
 .spanClass {
@@ -65,8 +68,10 @@ body {
 }
 
 #primary{
+  background-image: url("../images/thorSidebarBackgroundImg.png");
+  background-repeat: no-repeat;
   float: left;
-  width: 25%;
+  width: 20%;
   min-width: 80px;
   /* padding-right: 1em; */
   background-color: #323a3f;
@@ -155,7 +160,7 @@ html {
 
 .subnav-hero-section .subnav-hero-headline {
   color: #fefefe;
-  background-color: red;
+  background-color: rgb(231, 22, 22);
   font-weight: 600;
   padding-left: 5px;
   padding-right: 5px;

@@ -1,15 +1,11 @@
-
 $(document).foundation();
 let searchInput;
+let favCount;
+let addListener;
 let choosenGiphys = {
     name: "",
     urls: []
 };
-
-let favoriteGiphysBank = {
-    characterNames: [],
-    storedGiphys: []
-}
 
 $("#search-button").on("click", function (event) {
     event.preventDefault();
@@ -19,7 +15,7 @@ $("#search-button").on("click", function (event) {
         if (response.status == 200) {
             response.json().then(function (data) {
                 if (data.data.count !== 0) {
-                    console.log("CharacterData: ", data);
+                    // console.log("CharacterData: " , data);
                     displayInfo(data)
                     let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${searchInput}&limit=80&offset=0&rating=g&lang=en`
                     fetch(giphyApi).then(function (giphyData) {
@@ -59,6 +55,7 @@ function displayInfo(rawData) {
         if ($(".about-the-author").length) {
             $(".about-the-author").empty();
             $(".about-the-author").remove();
+            addListener = false;
         }
         // console.log( $(".about-the-author").length)
         let firstDiv = $("<div>")
@@ -87,28 +84,14 @@ function displayInfo(rawData) {
             .attr("id", "description")
             .appendTo(pDiv)
         $("<div>")
-            .addClass("small-12 medium-4 columns small-images-div")
+            .addClass("small-12 columns small-images-div")
             .appendTo(secondDiv)
-        // adds favorites counter -bb
-        let favDiv = $("<div>")
-            .addClass("dashboard-number-card")
-            .appendTo(pDiv)
-        $("<h5>")
-            .addClass("dashboard-number-value")
-            .appendTo(favDiv)
-        $("<div>")
-            .addClass("dashboard-number-area")
-            .appendTo(favDiv)
-        let favValue = $(".dashboard-number-value")
-        favValue.text("10")
-        let favArea = $(".dashboard-number-area")
-        favArea.text("Liked GIFs Remaining")
-        // end favorites counter
         let heroTitle = $(".author-title");
         let heroDescription = $("#description");
         heroTitle.text(rawData.data.results[0].name);
         heroDescription.text(rawData.data.results[0].description)
         $("#thumbnail").attr("src", rawData.data.results[0].thumbnail.path + ".jpg")
+        addListener = true;
         // console.log(rawData)
     }
     else {
@@ -128,6 +111,10 @@ function displayGiphys(giphyData) {
             $(".giphy-div").empty();
             $(".giphy-div").remove();
         }
+        $("<img>")
+            .addClass("save-fav")
+            .attr("src", "./assets/images/save.png")
+            .appendTo(document.body)
         let bigGiphyDiv = $("<div>")
             .addClass("bigGiphyDiv")
             .appendTo(document.body)
@@ -138,6 +125,7 @@ function displayGiphys(giphyData) {
                     .appendTo(bigGiphyDiv);
                 $("<img>")
                     .addClass("giphys")
+                    .attr("data-toggle", "tooltip")
                     .attr("src", giphyData.data[y].images.downsized_medium.url)
                     .appendTo(secondtGiphyDiv)
             }
@@ -145,25 +133,30 @@ function displayGiphys(giphyData) {
         })
     }
     addClickListenerBigGiphys();
+    addListenerOnSticky();
 }
 
 // add click listener for giphys
 function addClickListenerBigGiphys() {
     $(".giphy-div").click(function (event) {
-        if ($(".small-images-div").children().length < 1) {
+        if (addListener === true) {
             clickListenerSmllGiphys();
+            favCount = 12;
+            addListener = false;
         }
         let sourceGif = $(this).children('img').attr('src');
         // console.log($(".small-images-div").children())
         if ($(".small-images-div").children().length < 12) {
             $(".small-images-div").children().each(function () {
                 if (sourceGif === $(this).attr('src')) {
-                    console.log("Matches")
+                    // console.log("Matches")
                     $(this).remove();
                 }
             })
             if (!choosenGiphys.urls.includes(sourceGif)) {
-                choosenGiphys.urls.unshift(sourceGif)
+                favCount--;
+                $(".giphys").attr("title", favCount + "  Left")
+                choosenGiphys.urls.unshift(sourceGif);
             }
             // choosenGiphys.urls.unshift($(this).children('img').attr('src'))
             $("<img>")
@@ -171,12 +164,15 @@ function addClickListenerBigGiphys() {
                 .attr("src", $(this).children('img').attr('src'))
                 .appendTo($(".small-images-div"))
         }
-        console.log(choosenGiphys)
+        // console.log(choosenGiphys)
     })
 }
-
+// click listener for favorite
 function clickListenerSmllGiphys() {
     $(".small-images-div").on("click", "img", (function (event) {
+        favCount++;
+        $(".giphys").attr("title", favCount + "  Left")
+        $(".spanClassNumber").text(favCount + "  Left")
         choosenGiphys.urls.forEach(element => {
             if (element == $(this).attr('src')) {
                 choosenGiphys.urls.splice(choosenGiphys.urls.indexOf(element.trim()), 1);
@@ -184,4 +180,52 @@ function clickListenerSmllGiphys() {
         });
         $(this).remove()
     }))
+}
+
+function addListenerOnSticky() {
+    $("#save-message").fadeOut(0);
+    $(".save-fav").on("click", function () {
+        let favoriteGiphysBank;
+        if ($(".small-images-div").children().length != 0) {
+            $(".small-images-div").children().each(function () {
+                $(this).remove();
+            })
+            favoriteGiphysBank = JSON.parse(localStorage.getItem("Marvelizer")) || { characterNames: [], storedGiphys: [] };
+            if (!favoriteGiphysBank.characterNames.includes(choosenGiphys.name)) {
+                favoriteGiphysBank.characterNames.unshift(choosenGiphys.name);
+                favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
+                localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
+                $(".save-fav").remove();
+                $(".giphy-div").empty();
+                $(".giphy-div").remove();
+                $("#save-message")
+                    .text("You Have Saved " + choosenGiphys.urls.length + " " + choosenGiphys.name + " Giphys to your Favorites")
+                    .fadeIn(2000);
+                $("#save-message").fadeOut(3000);
+                choosenGiphys = {
+                    name: "",
+                    urls: []
+                };
+            } else if (favoriteGiphysBank.characterNames.includes(choosenGiphys.name)) {
+                // if(favoriteGiphysBank.storedGiphys[favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name)].length < 12 ){
+                favoriteGiphysBank.characterNames.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name), 1);
+                favoriteGiphysBank.storedGiphys.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name), 1)
+                favoriteGiphysBank.characterNames.unshift(choosenGiphys.name);
+                favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
+                localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
+                $(".save-fav").remove();
+                $(".giphy-div").empty();
+                $(".giphy-div").remove();
+                $("#save-message")
+                    .text("You Have Saved " + choosenGiphys.urls.length + " " + choosenGiphys.name + " Giphys to your Favorites")
+                    .fadeIn(2000);
+                $("#save-message").fadeOut(3000);
+                choosenGiphys = {
+                    name: "",
+                    urls: []
+                };
+            }
+            console.log(favoriteGiphysBank)
+        }
+    })
 }
