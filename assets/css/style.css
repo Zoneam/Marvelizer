@@ -1,6 +1,7 @@
 /* bb_sets background image for both pages */
 body {
   background-image: url("../../assets/images/marvelherobackground.png");
+  justify-content: left;
 }
 .small-image {
   width: 7%;
@@ -19,6 +20,9 @@ body {
   align-content: center;
 }
 
+#marvelizer-logo {
+  height: 75px;
+}
 #infobar {
   width: 100%;
   display: flex;
@@ -87,14 +91,15 @@ body {
 }
 
 #primary {
+  background-image: url("../images/thorSidebarBackgroundImg.png");
+  background-repeat: no-repeat;
   float: left;
   width: 20%;
-
+  min-width: 80px;
   /* padding-right: 1em; */
   background-color: #323a3f;
-
+  height: 100%;
   text-align: center;
-  height: fit-content;
 }
 
 #secondary {
@@ -109,6 +114,7 @@ body {
   /* margin-left: 15px; */
   margin: auto;
   display: inline-block;
+  margin-bottom: 40px;
 }
 
 .gif-div {
@@ -148,15 +154,16 @@ html {
 .bigGiphyDivFav {
   left: 20%;
   right: 20%;
-  width: 1300px;
+  /* width: 80%; */
   display: flex;
   flex-wrap: wrap;
   height: auto;
   /* position: absolute; */
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 15px;
   margin-left: 22%;
   background-color: transparent;
+  flex-wrap: wrap;
 }
 
 .giphy-div {
@@ -444,8 +451,8 @@ html {
 }
 .giphyLabel {
   position: relative;
-  left: 200px;
-  top: -50px;
+  left: 0px;
+  top: -40px;
   font-size: 24px;
   font-weight: 600;
   white-space: nowrap;
@@ -459,9 +466,10 @@ html {
   font-size: 24px;
 }
 .gif-area {
-  width: 50%;
+  width: 80%;
 }
 .giphy-div:hover {
+  /*-------------------------------------------------------*/
   cursor: -webkit-grab;
   padding: 10px;
   transition: 0.4s cubic-bezier(0, 0, 0, 3.07);
@@ -486,15 +494,13 @@ html {
   /* margin: 15px; */
 }
 .embeding {
-  margin-left: 10px;
   height: 22px;
 }
-/* .my-giphy-line {
-  display: flex;
-  align-content: center;
-  justify-content: flex-end;
-  align-items: flex-end;
-} */
+.my-giphy-line {
+  height: fit-content;
+  width: 260px;
+  margin-left: 20px;
+}
 .small-images-div {
   width: 400px;
   flex-wrap: wrap;
@@ -515,6 +521,27 @@ html {
   color: #0a0a0a;
 }
 
+#URLinput {
+  width: 500px;
+  height: 40px;
+  float: right;
+  display: none;
+}
+#copyUrlButton {
+  float: right;
+  position: relative;
+  height: 40px;
+  display: none;
+  background-color: rgb(108, 140, 161);
+  color: white;
+}
+#instructionsDiv {
+  background: rgb(108, 140, 161);
+  height: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
 @media (max-width: 640px) {
   .bigGiphyDiv {
     left: 3%;
@@ -528,6 +555,9 @@ html {
   }
   .small-image {
     height: 50px;
+  }
+  #marvelizer-logo {
+    height: 35px;
   }
 
   header {
