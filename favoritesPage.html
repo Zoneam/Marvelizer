@@ -4,29 +4,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marvelizer</title>
+  <title>Marvelizer Favorites Page</title>
   <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
 </head>
 
 <body>
+
+  <input type="text" id="URLinput" readonly> <input type="button" value="Copy embedded URL" id="copyUrlButton">
+
   <div id="primary">
     <div id="navArea">
       <br>
-      <a href="index.html" class="button">Back to the Marvelizer search</a>
-      <hr>
-      <label id="message-how-to">Click on the image to copy direct link</label>
+      <a href="./index.html">
+        <img src="./assets/images/marvelLogo.png" alt="An image of the Marvelizer logo used to go back a page.">
+      </a>
       <hr>
       <ul class="search-list"></ul>
     </div>
   </div>
 
-
-  <div class="bigGiphyDivFav gif-area">
-
-
+  <div id="secondary">
+    <div class="row small-up-1 medium-up-2 large-up-3 gif-area"></div>
+    <div class="callout alert" data-closable="slide-out-right">
+      <h5>Thanks for using The Marvelizer!</h5>
+      <p>Select your hero from the left side, then select a GIF to see its embedable link!</p>
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   </div>
-
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
@@ -34,6 +42,7 @@
   <script>
     $(document).foundation();
   </script>
+
 </body>
 
 </html>
