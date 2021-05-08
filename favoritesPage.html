@@ -10,9 +10,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/motion-ui@1.2.3/dist/motion-ui.min.css" />
 </head>
 
-<body>
 
-  <input type="text" id="URLinput" readonly> <input type="button" value="Copy embedded URL" id="copyUrlButton">
+<body>
+  <div id="embeded-link"><input type="text" id="URLinput" readonly> <input type="button" value="Copy embedded URL"
+      id="copyUrlButton">
+  </div>
+
 
   <div id="primary">
     <div id="navArea">
@@ -25,15 +28,19 @@
     </div>
   </div>
 
+  <div class="callout alert" data-closable="slide-out-right">
+    <h5>Thanks for using The Marvelizer!</h5>
+    <p>Select your hero from the left side, then select a GIF to see its embedable link!</p>
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+
   <div id="secondary">
-    <div class="row small-up-1 medium-up-2 large-up-3 gif-area"></div>
-    <div class="callout alert" data-closable="slide-out-right">
-      <h5>Thanks for using The Marvelizer!</h5>
-      <p>Select your hero from the left side, then select a GIF to see its embedable link!</p>
-      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+    <div class="row gif-area top-piece"></div>
+
   </div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

@@ -54,6 +54,9 @@ listClickEl.on("click", function (event) {
 
 let gifClickEl = $(".gif-area");
 gifClickEl.on("click", (function (event) {
+  $("#copyUrlButton").css("pointer-events","all")
+  $("#copyUrlButton").val("Copy embedded URL")
+  $("#embeded-link").fadeIn(2000)
   document.getElementById("URLinput").style.display = "initial";
   document.getElementById("copyUrlButton").style.display = "initial";
   $("#URLinput")
@@ -66,7 +69,12 @@ copyUrlButton.on("click", (function copyToClipboard() {
   gifURL.select();
   gifURL.setSelectionRange(0, 99999);
   document.execCommand("copy");
-  alert("Copied the URL: " + gifURL.value);
+
+
+  $("#copyUrlButton").val("Link Copied!")
+$("#URLinput").hide()
+
+
 }))
 
 

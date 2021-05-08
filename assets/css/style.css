@@ -1,7 +1,7 @@
 /* bb_sets background image for both pages */
 body {
   background-image: url("../../assets/images/marvelherobackground.png");
-  justify-content: left;
+  /* justify-content: left; */
 }
 .small-image {
   width: 7%;
@@ -11,6 +11,7 @@ body {
 
 #thumbnail {
   box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%);
+  margin-top: 35px;
 }
 .divWrap-Small-Images {
   display: flex;
@@ -87,26 +88,30 @@ body {
   padding: 6px;
   margin-top: 3px;
   text-align: center;
-  width: 100%;
+  width: 85%;
+  margin-left: 15px;
 }
 
 #primary {
   background-image: url("../images/thorSidebarBackgroundImg.png");
   background-repeat: no-repeat;
   float: left;
-  width: 20%;
+
   min-width: 80px;
   /* padding-right: 1em; */
   background-color: #323a3f;
   height: 100%;
   text-align: center;
 }
-
+.callout {
+  margin-left: 800px;
+  position: absolute;
+}
 #secondary {
-  float: right;
-  width: 75%;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin-top: 65px;
   /* justify-content: space-between; */
 }
 
@@ -466,7 +471,10 @@ html {
   font-size: 24px;
 }
 .gif-area {
-  width: 80%;
+  display: flex;
+  /* width: 90%; */
+  /* margin-left: 20%; */
+  flex-wrap: wrap;
 }
 .giphy-div:hover {
   /*-------------------------------------------------------*/
@@ -522,18 +530,29 @@ html {
 }
 
 #URLinput {
-  width: 500px;
-  height: 40px;
+  width: 1000px;
+  height: 65px;
   float: right;
   display: none;
+  background-color: #3b5998;
+  color: #cacaca;
 }
+#embeded-link {
+  position: absolute;
+  left: 0;
+  top: 0px;
+}
+
 #copyUrlButton {
   float: right;
   position: relative;
-  height: 40px;
-  display: none;
+  height: 65px;
+
+  pointer-events: none;
+
   background-color: rgb(108, 140, 161);
   color: white;
+  width: 300px;
 }
 #instructionsDiv {
   background: rgb(108, 140, 161);
@@ -552,6 +571,9 @@ html {
   }
   .giphys {
     width: 100px;
+  }
+  .giphy-div {
+    width: 85px;
   }
   .small-image {
     height: 50px;
