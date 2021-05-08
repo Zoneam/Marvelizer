@@ -20,7 +20,7 @@ This was our first group assignment, and gave the team more experience developin
 
 All team members contributed to ideas, researched APIs, and contributed to shared-screen development sessions. Additionally, individual contributions include
 * Hayk Mnatsakanyan - Created GitHub repo and handled pull requests, lead shared-screen development sessions, was largely responsible for the search page and API calls, and more.
-* Beau Barrier - Did Foundation component/template research and development, created the initial Favorites page, added background images and other visual design improvements.
+* Beau Barrier - Did Foundation component/template research and development, created the Favorites page, added background images and other visual design improvements. Wrote code for getting and saving GIF URL's to embed in user's web pages.
 * Gerome Guevarra - Researched APIs, contributed ideas for general concept, contributed to shard-screen development sessions. 
 * Matt Linder - Researched APIs, contributed to concept, did Foundation component research and development, created slides for presentation, wrote readme, wrote first version of favorites-saving code, reworked Favorites page.
 
