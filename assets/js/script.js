@@ -24,12 +24,11 @@ $('#search-input').keypress(function(e){
 $("#lucky-button").on("click",function(event){
     let offset = Math.floor(Math.random() * 1492) //--- Total characters 1493
     searchInput = "";
-    let i = 0;
     let luckyApi = `https://gateway.marvel.com/v1/public/characters?limit=10&offset=${ offset }&ts=1&apikey=2ef8d58d6e4c1a6eb9fe640436563e2c&hash=4b46213c75452f9fc065e74ea4d8d2d3`;
     fetch(luckyApi).then(function(response){
         if (response.status == 200) {
             response.json().then(function (data) {
-                if(data.data.count !== 0){ //------ Just in case chacking if we got results
+                if(data.data.count !== 0){ //------ Just in case checking if we got results
                     for(let i = 0; i <= data.data.results.length - 1; i++ ){
                         //----- Minimizing results with no description or picture
                         if(data.data.results[i].description != "" && data.data.results[i].thumbnail.path != "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
@@ -51,21 +50,21 @@ $("#lucky-button").on("click",function(event){
     }) 
 })
 
-//---------- passing our character name to fetch function to get 
+//---------- Passing our character name to fetch function to get 
 function apiFetch() {
     let apiLink = `https://gateway.marvel.com/v1/public/characters?name=${ searchInput }&ts=1&apikey=2ef8d58d6e4c1a6eb9fe640436563e2c&hash=4b46213c75452f9fc065e74ea4d8d2d3`
     fetch(apiLink).then(function(response){
         if (response.status == 200) {
             response.json().then(function (data) {
                 if(data.data.count !== 0){
-                    //--- putting our gifs on the screen
+                    //--- Putting our gifs on the screen
                     displayInfo(data)
-                    //------passing name to our giphy api to get 60 results
+                    //------Passing name to our giphy api to get 60 results
                     let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=60&offset=0&rating=g&lang=en`
                     fetch(giphyApi).then(function(giphyData){
                         if (giphyData.status == 200){
                             giphyData.json().then(function (giphyData) { 
-                                // resetting our choosen gifys object
+                                // Resetting our choosen gifys object
                                 choosenGiphys = {
                                     name: "",
                                     urls: []
@@ -73,6 +72,7 @@ function apiFetch() {
                             choosenGiphys.name = searchInput;
                             displayGiphys(giphyData);
                     })
+                    //------------ Showing error modals
                         } else {
                             $("#search-input").val("");
                             $('#Nothing-Found').foundation("open");
@@ -92,7 +92,7 @@ function apiFetch() {
     })
 }
 
-//---------------- dynamically adding our gifs 
+//---------------- Dynamically adding our character info 
 function displayInfo(rawData){
     $("#search-input").val("");
     if (rawData.data.results.length != 0){
@@ -144,6 +144,7 @@ function displayInfo(rawData){
         heroTitle.text(rawData.data.results[0].name);
         heroDescription.text(rawData.data.results[0].description)
         $("#thumbnail").attr("src", rawData.data.results[0].thumbnail.path + ".jpg")
+        // ----- Confirming that info has been displayed and we can add click listener
         addListener = true;
             } 
  else {
@@ -151,7 +152,7 @@ function displayInfo(rawData){
 }
 }
 
-//--------------- dynamically adding giphys
+//--------------- Dynamically adding giphys
 function displayGiphys(giphyData){
     let y=0;
     if (giphyData.data.length != 0){
