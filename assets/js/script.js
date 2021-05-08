@@ -11,7 +11,6 @@ let choosenGiphys = {
 //-------------------- Random character search
 $("#lucky-button").on("click",function(event){
     let offset = Math.floor(Math.random() * 1492)
-    // console.log(offset)
     searchInput ="";
     let i=0;
     let luckyApi = `https://gateway.marvel.com/v1/public/characters?limit=10&offset=${ offset }&ts=1&apikey=2ef8d58d6e4c1a6eb9fe640436563e2c&hash=4b46213c75452f9fc065e74ea4d8d2d3`;
@@ -19,24 +18,19 @@ $("#lucky-button").on("click",function(event){
         if (response.status == 200) {
             response.json().then(function (data) {
                 if(data.data.count !== 0){
-                    console.log(data)
                     for(let i =0; i<=data.data.results.length - 1;i++){
-                        console.log(i)
                         //----- Minimizing results with no description or picture
                         if(data.data.results[i].description != "" && data.data.results[i].thumbnail.path != "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
                             searchInput = data.data.results[i].name;
-                            console.log("searchinput ++", searchInput)
                             apiFetch();
                             break;   
                         }
                         if (data.data.results[i].description != "" || data.data.results[i].thumbnail.path != "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
                             searchInput = data.data.results[i].name;
-                            console.log("searchinput --", searchInput)
                         } 
                         if (i == data.data.results.length - 1 && searchInput == "") {
                             searchInput = data.data.results[0].name;
                         }
-                        console.log(searchInput)
                     }
                     apiFetch();
                 }
@@ -44,7 +38,6 @@ $("#lucky-button").on("click",function(event){
         }
     }) 
 })
-
 
 $("#search-button").on("click", function(event){
     event.preventDefault();
@@ -58,7 +51,6 @@ function apiFetch() {
         if (response.status == 200) {
             response.json().then(function (data) {
                 if(data.data.count !== 0){
-                    // console.log("CharacterData: " , data);
                     displayInfo(data)
                     let giphyApi = `https://api.giphy.com/v1/gifs/search?api_key=nwuYq2Fo9Ze7lf358CgrL7CJzWpVdYMG&q=${ searchInput }&limit=60&offset=0&rating=g&lang=en`
                     fetch(giphyApi).then(function(giphyData){
@@ -69,7 +61,6 @@ function apiFetch() {
                                     urls: []
                                 };
                             choosenGiphys.name = searchInput;
-                            // console.log("giphyData: " , giphyData);
                             displayGiphys(giphyData);
                     })
                         } else {
@@ -94,7 +85,6 @@ function apiFetch() {
 
 
 function displayInfo(rawData){
-    // console.log(rawData)
     $("#search-input").val("");
     if (rawData.data.results.length != 0){
         if ($(".about-the-author").length){
@@ -102,11 +92,9 @@ function displayInfo(rawData){
             $(".about-the-author").remove();
             addListener = false;
         }  
-            // console.log( $(".about-the-author").length)
         let firstDiv= $("<div>")
                 .addClass("about-the-author")
                 .appendTo(document.body)
-        //-----
         let secondDiv =$("<div>")
                 .addClass("row")
                 .appendTo(firstDiv)
@@ -138,7 +126,7 @@ function displayInfo(rawData){
                 .addClass(" small-images-div")
                 .appendTo(divwrapsmallimages)
                 $("<span>")
-                .attr("id","save-message")  //----new
+                .attr("id","save-message")  
                 .appendTo(divwrapsmallimages)
                 $("<img>")
                 .addClass("save-fav")
@@ -150,7 +138,6 @@ function displayInfo(rawData){
         heroDescription.text(rawData.data.results[0].description)
         $("#thumbnail").attr("src", rawData.data.results[0].thumbnail.path + ".jpg")
         addListener = true;
-        // console.log(rawData)
             } 
  else {
     $('#modalWrongCharacterName').foundation("open");
@@ -165,7 +152,7 @@ $('#search-input').keypress(function(e){
 function displayGiphys(giphyData){
     let y=0;
     if (giphyData.data.length != 0){
-        if ($(".bigGiphyDiv").length){ //-------------------------------------------------------
+        if ($(".bigGiphyDiv").length){ 
             $(".giphy-div").empty();
             $(".giphy-div").remove();
             $(".bigGiphyDiv").remove();
@@ -187,10 +174,6 @@ function displayGiphys(giphyData){
                 y++;
         })
     }
-
-
-            // $(".save-fav").toggle();
-
     addClickListenerBigGiphys();
     addListenerOnSticky();
 }
@@ -204,11 +187,9 @@ function addClickListenerBigGiphys() {
             addListener = false;
         }
         let sourceGif = $(this).children('img').attr('src');
-        // console.log($(".small-images-div").children())
     if ($(".small-images-div").children().length < 12 ){
          $(".small-images-div").children().each(function(){
             if(sourceGif === $(this).attr('src')) {
-                // console.log("Matches")
                 $(this).remove();
             } 
         })
@@ -218,13 +199,11 @@ function addClickListenerBigGiphys() {
             $("#save-message").text("Save " + `${ Math.abs(favCount - 12) }` + " Giphys to Favorites")
             choosenGiphys.urls.unshift(sourceGif);
         }
-        // choosenGiphys.urls.unshift($(this).children('img').attr('src'))
         $("<img>")
         .addClass("small-image")
         .attr("src", $(this).children('img').attr('src'))
         .appendTo($(".small-images-div"))
     }
-    // console.log(choosenGiphys)
     })
 }
 // click listener for favorite
@@ -245,11 +224,9 @@ function clickListenerSmllGiphys(){
 
 // add click listener and save lo local storage on sticky button
 function addListenerOnSticky(){
-    // $("#save-message").fadeOut(0);
 $(".save-fav").on("click", function(){
     let favoriteGiphysBank;
     if ($(".small-images-div").children().length != 0 ){
-        // $( ".save-fav" ).hide();
         $(".small-images-div").children().each(function(){
             $(this).remove();
         })
@@ -259,14 +236,12 @@ $(".save-fav").on("click", function(){
                 favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
                 localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
         } else if ( favoriteGiphysBank.characterNames.includes(choosenGiphys.name) ) {
-            // if(favoriteGiphysBank.storedGiphys[favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name)].length < 12 ){
                 favoriteGiphysBank.characterNames.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name),1);
                 favoriteGiphysBank.storedGiphys.splice(favoriteGiphysBank.characterNames.indexOf(choosenGiphys.name),1)
                 favoriteGiphysBank.characterNames.unshift(choosenGiphys.name);
                 favoriteGiphysBank.storedGiphys.unshift(choosenGiphys.urls);
                 localStorage.setItem("Marvelizer", JSON.stringify(favoriteGiphysBank));
         }
-        // $(".save-fav").remove();
         $(".giphy-div").empty();
         $(".giphy-div").remove();
         $("#save-message")
@@ -277,7 +252,6 @@ $(".save-fav").on("click", function(){
             name: "",
             urls: []
             };
-console.log(favoriteGiphysBank)
     }
 })
 }
