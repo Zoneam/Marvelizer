@@ -88,19 +88,20 @@ body {
 
 #primary {
   float: left;
-  width: 25%;
-  min-width: 80px;
+  /* width: 20%; */
+
   /* padding-right: 1em; */
   background-color: #323a3f;
-  height: 100%;
+
   text-align: center;
+  height: fit-content;
 }
 
 #secondary {
-  float: right;
+  /* float: right;
   width: 75%;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-start; */
   /* justify-content: space-between; */
 }
 
@@ -143,6 +144,21 @@ html {
   margin-top: 15px;
   background-color: transparent;
 }
+
+.bigGiphyDivFav {
+  left: 20%;
+  right: 20%;
+  width: 1300px;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  /* position: absolute; */
+  flex-direction: column;
+
+  margin-left: 22%;
+  background-color: transparent;
+}
+
 .giphy-div {
   margin-left: 10px;
   width: 150px;
@@ -155,6 +171,10 @@ html {
 
 .giphys {
   height: -webkit-fill-available;
+}
+
+.giphysfav {
+  height: auto;
 }
 .subnav-hero-section {
   text-align: center;
@@ -408,7 +428,10 @@ html {
 .about-the-author .author-image {
   border: 1px solid #cacaca;
 }
-
+#message-how-to {
+  font-weight: 900;
+  color: #cacaca;
+}
 .save-fav:hover {
   transition: 0.3s ease;
   border-radius: 1px;
@@ -418,14 +441,25 @@ html {
   filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
   cursor: -webkit-grab;
 }
-
+.giphyLabel {
+  position: relative;
+  left: 200px;
+  top: -50px;
+  font-size: 24px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 15px;
+  height: 2px;
+}
 #save-message {
   margin-top: 10px;
   align-self: center;
   text-shadow: 4px 1px 6px rgb(0, 0, 0);
   font-size: 24px;
 }
-
+.gif-area {
+  width: 50%;
+}
 .giphy-div:hover {
   cursor: -webkit-grab;
   padding: 10px;
@@ -439,12 +473,27 @@ html {
 }
 .search-name {
   cursor: -webkit-grab;
+  text-transform: capitalize;
 }
 
 .giphy-div:not(:hover) {
   transition: 0.4s ease;
 }
-
+.giphy-divFav {
+  height: fit-content;
+  display: flex;
+  /* margin: 15px; */
+}
+.embeding {
+  margin-left: 10px;
+  height: 22px;
+}
+/* .my-giphy-line {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  align-items: flex-end;
+} */
 .small-images-div {
   width: 400px;
   flex-wrap: wrap;
@@ -460,6 +509,10 @@ html {
   height: fit-content;
   flex-wrap: wrap;
 }
+.search-name:hover {
+  background-color: #fa6711;
+  color: #0a0a0a;
+}
 
 @media (max-width: 640px) {
   .bigGiphyDiv {
@@ -471,6 +524,9 @@ html {
   }
   .giphys {
     width: 100px;
+  }
+  .search-name {
+    font-size: 12px;
   }
   .small-image {
     height: 50px;
@@ -495,6 +551,34 @@ html {
   }
   .subnav-hero-section {
     height: 150px;
+  }
+  #navArea {
+    display: initial;
+    width: 200px;
+  }
+  .back-button {
+    font-size: 12px;
+  }
+  #primary {
+    width: 45%;
+  }
+  .bigGiphyDivFav {
+    flex-direction: column;
+    width: min-content;
+  }
+  .giphy-divFav {
+    width: 80px;
+  }
+  .giphyLabel {
+    left: 83px;
+    top: -42px;
+    font-size: 6px;
+  }
+  .search-list li {
+    width: 95%;
+  }
+  #message-how-to {
+    font-size: 11px;
   }
 }
 
