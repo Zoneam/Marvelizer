@@ -26,9 +26,6 @@ function displayGifs(clickedId) {
       }  
 
     for (let i = 0; i < existingEntries.storedGiphys[clickedId].length; i++) {
-
- 
-
         let giphyLine = $("<div>")
           .addClass("my-giphy-line")
           .appendTo($(".gif-area"));
@@ -39,29 +36,47 @@ function displayGifs(clickedId) {
           .addClass("giphysfav")
           .attr("src", existingEntries.storedGiphys[clickedId][i])
           .appendTo(gifColumnDiv);
-          $("<label>").text("").addClass("giphyLabel").appendTo(giphyLine)
-    
-          $("<input>").attr("type","text").addClass("embeding").val('<img src="' + existingEntries.storedGiphys[clickedId][i]+ '" width=”125″ height=”12″ />' ).appendTo(giphyLine)
-
   }
 }
 
+$(".copy-button").on("click", function(){
+  if($(".copy-button").text() == "Switch to Copy Embedding Link" ){
+  $("#message-how-to").text("Click on the image to copy embedding link")
+  $(".copy-button").text("Switch to Copy Direct Link")
+  } else if($(".copy-button").text() == "Switch to Copy Direct Link"){
+    $("#message-how-to").text("Click on the image to copy direct link")
+  $(".copy-button").text("Switch to Copy Embedding Link")
+  }
+})
+
+
 function addListeneronGiphys() {
+
 $(".giphy-div").on("click", function(e){
 e.preventDefault();
-$(this).siblings("label").text("Link has Been Copied to Clipboard").show();
-let copyLink = $(this).children("img").attr("src")
+$(".giphyLabel").show();
+let copyLink
+if ($("#message-how-to").text() == "Click on the image to copy direct link"){
+    copyLink = $(this).children("img").attr("src")
     const el = document.createElement('textarea');
     el.value = copyLink;
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-    $(this).siblings("label").text("Link has Been Copied to Clipboard").fadeOut(3000);
+    $(".giphyLabel").text("Direcd Link has Been Copied to Clipboard").fadeOut(3000);
+} else if ($("#message-how-to").text() == "Click on the image to copy embedding link"){
+  copyLink = '<img src="' + $(this).children("img").attr('src') + '" width=”125″ height=”12″ />';
+  const el = document.createElement('textarea');
+    el.value = copyLink;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    $(".giphyLabel").text("Embedding Link has Been Copied to Clipboard").fadeOut(3000);
+}
 
 })
-
-
 
 }
 
