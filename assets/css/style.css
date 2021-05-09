@@ -31,6 +31,9 @@ body {
   justify-content: center;
   align-content: center;
 }
+.sticky-div {
+  position: absolute;
+}
 
 .save-fav {
   /* position: -webkit-sticky; */
@@ -96,21 +99,34 @@ body {
   background-repeat: no-repeat;
   float: left;
 
+  /* width: 20%; */
+
+=======
+
   min-width: 80px;
+
   /* padding-right: 1em; */
   background-color: #323a3f;
-  height: 100%;
+
   text-align: center;
+  height: fit-content;
 }
 .callout {
   margin-left: 800px;
   position: absolute;
 }
 #secondary {
+
+  /* float: right;
+  width: 75%;
+  flex-wrap: wrap;
+  justify-content: flex-start; */
+=======
   width: 100%;
   flex-wrap: wrap;
   justify-content: flex-start;
   margin-top: 65px;
+
   /* justify-content: space-between; */
 }
 
@@ -158,16 +174,26 @@ html {
 .bigGiphyDivFav {
   left: 20%;
   right: 20%;
+
+  width: 1300px;
+
   /* width: 80%; */
+
   display: flex;
   flex-wrap: wrap;
   height: auto;
-  /* position: absolute; */
+
+  /* flex-direction: column; */
+
+  margin-left: 22%;
+  background-color: transparent;
+
   flex-direction: row;
   margin-top: 15px;
   margin-left: 22%;
   background-color: transparent;
   flex-wrap: wrap;
+
 }
 
 .giphy-div {
@@ -186,7 +212,10 @@ html {
 
 .giphysfav {
   height: auto;
+
+=======
   margin-top: 10px;
+
 }
 .subnav-hero-section {
   text-align: center;
@@ -240,8 +269,6 @@ html {
   text-shadow: 5px 5px 3px rgb(63, 62, 62, 0.3);
   font-size: 1.4em;
 }
-
-/*---------------------------------*/
 
 .card-user-profile {
   position: relative;
@@ -348,19 +375,11 @@ html {
   opacity: 0.8;
 }
 
-/* .card-div {
-  width: 400px;
-  height: 600px;
-  padding: 30px;
-} */
-
 #content-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-/* ----------------------*/
 
 .about-the-author {
   background-color: #fefefe;
@@ -448,13 +467,22 @@ html {
   transition: 0.3s ease;
   border-radius: 1px;
   width: 55px;
-  /* box-shadow: 5px 4px 11px 2px rgb(9 9 9 / 77%); */
   -webkit-filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
   filter: drop-shadow(5px 5px 5px rgb(0, 0, 0));
   cursor: -webkit-grab;
 }
 .giphyLabel {
   position: relative;
+
+  font-size: 13px;
+  font-weight: 600;
+  color: #cacaca;
+}
+#copy-message {
+  margin: 4px;
+  width: 350px;
+  height: 17px;
+
   left: 0px;
   top: -40px;
   font-size: 24px;
@@ -462,6 +490,7 @@ html {
   white-space: nowrap;
   margin-left: 15px;
   height: 2px;
+
 }
 #save-message {
   margin-top: 10px;
@@ -470,10 +499,14 @@ html {
   font-size: 24px;
 }
 .gif-area {
+
+  width: 50%;
+
   display: flex;
   /* width: 90%; */
   /* margin-left: 20%; */
   flex-wrap: wrap;
+
 }
 .giphy-div:hover {
   /*-------------------------------------------------------*/
@@ -483,7 +516,6 @@ html {
   border-radius: 3px 20px 3px 20px;
   border-width: 2px;
   border-color: #ff7b00;
-  /* margin: 15px; */
   border-color: #fa6711;
   box-shadow: 0px 0px 11px 5px rgb(255 131 0 / 70%);
 }
@@ -498,6 +530,15 @@ html {
 .giphy-divFav {
   height: fit-content;
   display: flex;
+
+  margin-top: 10px;
+}
+.embeding {
+  margin-left: 10px;
+  height: 22px;
+}
+
+
   /* margin: 15px; */
 }
 .embeding {
@@ -508,6 +549,7 @@ html {
   width: 260px;
   margin-left: 20px;
 }
+
 .small-images-div {
   width: 400px;
   flex-wrap: wrap;
@@ -527,6 +569,11 @@ html {
   background-color: #fa6711;
   color: #0a0a0a;
 }
+
+.copy-button {
+  left: 300px;
+  margin-top: 8px;
+
 
 #URLinput {
   width: 1000px;
@@ -560,6 +607,7 @@ html {
   height: 50px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
+
 }
 
 @media (max-width: 640px) {
@@ -573,8 +621,13 @@ html {
   .giphys {
     width: 100px;
   }
+
+  .search-name {
+    font-size: 12px;
+=======
   .giphy-div {
     width: 85px;
+
   }
   .small-image {
     height: 50px;
@@ -589,7 +642,6 @@ html {
 
   .save-fav {
     align-self: center;
-    /* width: 28px; */
   }
   #save-message {
     font-size: 12px;
@@ -602,6 +654,35 @@ html {
   }
   .subnav-hero-section {
     height: 150px;
+  }
+  #navArea {
+    display: initial;
+    width: 200px;
+  }
+  .back-button {
+    font-size: 12px;
+  }
+  #primary {
+    width: 45%;
+  }
+  .bigGiphyDivFav {
+    flex-direction: column;
+    width: min-content;
+  }
+  .giphy-divFav {
+    width: 150px;
+  }
+  .giphyLabel {
+    font-size: 9px;
+  }
+  .search-list li {
+    width: 95%;
+  }
+  #message-how-to {
+    font-size: 11px;
+  }
+  #copy-message {
+    width: 160px;
   }
 }
 
