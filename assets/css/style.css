@@ -1,6 +1,7 @@
 /* bb_sets background image for both pages */
 body {
   background-image: url("../../assets/images/marvelherobackground.png");
+  /* justify-content: left; */
 }
 .small-image {
   width: 7%;
@@ -19,6 +20,9 @@ body {
   align-content: center;
 }
 
+#marvelizer-logo {
+  height: 75px;
+}
 #infobar {
   width: 100%;
   display: flex;
@@ -86,12 +90,20 @@ body {
   padding: 6px;
   margin-top: 3px;
   text-align: center;
-  width: 100%;
+  width: 85%;
+  margin-left: 15px;
 }
 
 #primary {
+  background-image: url("../images/thorSidebarBackgroundImg.png");
+  background-repeat: no-repeat;
   float: left;
+
   /* width: 20%; */
+
+=======
+
+  min-width: 80px;
 
   /* padding-right: 1em; */
   background-color: #323a3f;
@@ -99,12 +111,22 @@ body {
   text-align: center;
   height: fit-content;
 }
-
+.callout {
+  margin-left: 800px;
+  position: absolute;
+}
 #secondary {
+
   /* float: right;
   width: 75%;
   flex-wrap: wrap;
   justify-content: flex-start; */
+=======
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 65px;
+
   /* justify-content: space-between; */
 }
 
@@ -112,6 +134,7 @@ body {
   /* margin-left: 15px; */
   margin: auto;
   display: inline-block;
+  margin-bottom: 40px;
 }
 
 .gif-div {
@@ -151,15 +174,26 @@ html {
 .bigGiphyDivFav {
   left: 20%;
   right: 20%;
+
   width: 1300px;
+
+  /* width: 80%; */
+
   display: flex;
   flex-wrap: wrap;
   height: auto;
-  /* position: absolute; */
+
   /* flex-direction: column; */
 
   margin-left: 22%;
   background-color: transparent;
+
+  flex-direction: row;
+  margin-top: 15px;
+  margin-left: 22%;
+  background-color: transparent;
+  flex-wrap: wrap;
+
 }
 
 .giphy-div {
@@ -178,6 +212,10 @@ html {
 
 .giphysfav {
   height: auto;
+
+=======
+  margin-top: 10px;
+
 }
 .subnav-hero-section {
   text-align: center;
@@ -435,6 +473,7 @@ html {
 }
 .giphyLabel {
   position: relative;
+
   font-size: 13px;
   font-weight: 600;
   color: #cacaca;
@@ -443,6 +482,15 @@ html {
   margin: 4px;
   width: 350px;
   height: 17px;
+
+  left: 0px;
+  top: -40px;
+  font-size: 24px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 15px;
+  height: 2px;
+
 }
 #save-message {
   margin-top: 10px;
@@ -451,9 +499,17 @@ html {
   font-size: 24px;
 }
 .gif-area {
+
   width: 50%;
+
+  display: flex;
+  /* width: 90%; */
+  /* margin-left: 20%; */
+  flex-wrap: wrap;
+
 }
 .giphy-div:hover {
+  /*-------------------------------------------------------*/
   cursor: -webkit-grab;
   padding: 10px;
   transition: 0.4s cubic-bezier(0, 0, 0, 3.07);
@@ -474,11 +530,24 @@ html {
 .giphy-divFav {
   height: fit-content;
   display: flex;
+
   margin-top: 10px;
 }
 .embeding {
   margin-left: 10px;
   height: 22px;
+}
+
+
+  /* margin: 15px; */
+}
+.embeding {
+  height: 22px;
+}
+.my-giphy-line {
+  height: fit-content;
+  width: 260px;
+  margin-left: 20px;
 }
 
 .small-images-div {
@@ -500,9 +569,45 @@ html {
   background-color: #fa6711;
   color: #0a0a0a;
 }
+
 .copy-button {
   left: 300px;
   margin-top: 8px;
+
+
+#URLinput {
+  width: 1000px;
+  height: 65px;
+  float: right;
+  display: none;
+  background-color: #3b5998;
+  color: #cacaca;
+}
+#embeded-link {
+  position: absolute;
+  left: 0;
+  display: flex;
+  top: 0px;
+  flex-wrap: nowrap;
+}
+
+#copyUrlButton {
+  float: right;
+  position: relative;
+  height: 65px;
+
+  pointer-events: none;
+
+  background-color: rgb(108, 140, 161);
+  color: white;
+  width: 300px;
+}
+#instructionsDiv {
+  background: rgb(108, 140, 161);
+  height: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+
 }
 
 @media (max-width: 640px) {
@@ -516,11 +621,19 @@ html {
   .giphys {
     width: 100px;
   }
+
   .search-name {
     font-size: 12px;
+=======
+  .giphy-div {
+    width: 85px;
+
   }
   .small-image {
     height: 50px;
+  }
+  #marvelizer-logo {
+    height: 35px;
   }
 
   header {

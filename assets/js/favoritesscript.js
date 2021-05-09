@@ -4,14 +4,14 @@ var namePositionArray = []
 
 function displaySearchNames() {
   if (existingEntries !== null) {
-    for (let i =  0; i < existingEntries.characterNames.length; i++) {
+    for (let i = 0; i < existingEntries.characterNames.length; i++) {
       let searchLi = $("<li>")
         .addClass("search-name")
         .attr("id", i)
         .appendTo(".search-list");
-      searchLi.text(existingEntries.characterNames[i]); 
+      searchLi.text(existingEntries.characterNames[i]);
       namePositionArray.push(existingEntries.characterNames[i]);
-    } 
+    }
   } else {
     let noGifMessage = $("<p>")
       .addClass("no-gif-message")
@@ -21,6 +21,7 @@ function displaySearchNames() {
 }
 
 function displayGifs(clickedId) {
+
   if ($(".gif-area").length){
       $(".gif-area").empty();
       }  
@@ -46,6 +47,20 @@ $(".copy-button").on("click", function(){
   } else if($(".copy-button").text() == "Switch to Copy Direct Link"){
     $("#message-how-to").text("Click on the image to copy direct link")
   $(".copy-button").text("Switch to Copy Embedding Link")
+=======
+  trigger = true;
+  if ($(".gif-area").length) {
+    $(".gif-area").empty();
+  }
+  for (let i = 0; i < existingEntries.storedGiphys[clickedId].length; i++) {
+    let gifColumnDiv = $("<div>")
+      .addClass("column gif-div card")
+      .appendTo($(".gif-area"));
+    $("<img>")
+      .addClass("thumbnail")
+      .attr("src", existingEntries.storedGiphys[clickedId][i])
+      .appendTo(gifColumnDiv);
+
   }
 })
 
@@ -79,18 +94,17 @@ if ($("#message-how-to").text() == "Click on the image to copy direct link"){
 })
 
 }
-
 displaySearchNames()
 
-// event listener for list item clicks
-let listClickEl = $(".search-name");  
-listClickEl.on("click", function(event){
+let listClickEl = $(".search-name");
+listClickEl.on("click", function (event) {
   event.preventDefault();
   // let clickedName = $(this).text();
   let clickedId = $(this).attr('id');
   displayGifs(clickedId);
   $(this).attr("backgroundColor","red")
   $(".search-name")
+
       .attr("backgroundColor", "white")
       .attr("color", "darkgray");
   $(event.target)
@@ -98,3 +112,38 @@ listClickEl.on("click", function(event){
     .attr("color", "white");
     addListeneronGiphys()
 })
+
+    .css("backgroundColor", "white")
+    .css("color", "darkgray");
+  $(event.target)
+    .css("backgroundColor", "red")
+    .css("color", "white");
+})
+
+
+let gifClickEl = $(".gif-area");
+gifClickEl.on("click", (function (event) {
+  $("#copyUrlButton").css("pointer-events","all")
+  $("#copyUrlButton").val("Copy embedded URL")
+  $("#embeded-link").fadeIn(2000)
+  document.getElementById("URLinput").style.display = "initial";
+  document.getElementById("copyUrlButton").style.display = "initial";
+  $("#URLinput")
+    .val("<img src='" + event.target.src + "'>");
+}))
+
+let copyUrlButton = $("#copyUrlButton")
+copyUrlButton.on("click", (function copyToClipboard() {
+  var gifURL = document.getElementById("URLinput");
+  gifURL.select();
+  gifURL.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+
+
+  $("#copyUrlButton").val("Link Copied!")
+$("#URLinput").hide()
+
+
+}))
+
+
