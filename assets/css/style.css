@@ -167,7 +167,8 @@ html {
 }
 
 .giphysfav {
-  height: auto;
+  height: -webkit-fill-available;
+  width: fit-content;
 }
 
 #marvelizer-logo {
@@ -501,7 +502,12 @@ html {
   display: flex;
   margin-top: 10px;
   margin-left: 20px;
-  width: fit-content;
+  width: -webkit-fill-available;
+  /* width: -webkit-fill-available; */
+  height: 200px;
+}
+.my-giphy-line {
+  width: 300px;
 }
 
 @media (max-width: 640px) {
@@ -519,7 +525,7 @@ html {
     font-size: 12px;
   }
   .small-image {
-    height: 50px;
+    width: 25%;
   }
 
   header {
@@ -577,11 +583,15 @@ html {
   .giphy-divFav {
     width: 130px;
     margin-left: 30px;
+    height: fit-content;
+  }
+  .my-giphy-line {
+    width: 150px;
   }
 }
 
-/* @media print, screen and (min-width: 640px) {
+@media print, screen and (min-width: 640px) {
   .medium-4 {
     width: 32.33333%;
   }
-} */
+}
