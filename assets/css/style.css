@@ -466,11 +466,7 @@ html {
 .giphy-div:not(:hover) {
   transition: 0.4s ease;
 }
-.giphy-divFav {
-  height: fit-content;
-  display: flex;
-  margin-top: 10px;
-}
+
 .embeding {
   margin-left: 10px;
   height: 22px;
@@ -498,6 +494,14 @@ html {
 .copy-button {
   left: 300px;
   margin-top: 8px;
+}
+
+.giphy-divFav {
+  height: fit-content;
+  display: flex;
+  margin-top: 10px;
+  margin-left: 20px;
+  width: fit-content;
 }
 
 @media (max-width: 640px) {
@@ -551,9 +555,7 @@ html {
     flex-direction: column;
     width: min-content;
   }
-  .giphy-divFav {
-    width: 150px;
-  }
+
   .giphyLabel {
     font-size: 9px;
   }
@@ -571,6 +573,10 @@ html {
   }
   .giphy-div {
     width: 80px;
+  }
+  .giphy-divFav {
+    width: 130px;
+    margin-left: 30px;
   }
 }
 
