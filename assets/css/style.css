@@ -505,7 +505,7 @@ html {
   margin-left: 20px;
   width: -webkit-fill-available;
   /* width: -webkit-fill-available; */
-  height: 200px;
+  height: auto;
 }
 .my-giphy-line {
   width: 300px;
