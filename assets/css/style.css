@@ -526,7 +526,7 @@ html {
     font-size: 12px;
   }
   .small-image {
-    width: 25%;
+    width: 70px;
   }
 
   header {
@@ -584,7 +584,7 @@ html {
   .giphy-divFav {
     width: 130px;
     margin-left: 30px;
-    height: fit-content;
+    /* height: fit-content; */
   }
   .my-giphy-line {
     width: 150px;
