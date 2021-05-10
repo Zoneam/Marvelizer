@@ -44,6 +44,8 @@ Other links:
 
 ---
 
+---
+
 ![Screen Capture](./assets/images/screencapture.png)
 
 ![Screen Capture](./assets/images/favorites-page.png)
