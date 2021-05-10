@@ -529,7 +529,7 @@ html {
   }
   .small-image {
     width: 40px;
-    height: fit-content;
+    height: 30px;
   }
 
   header {
