@@ -69,6 +69,7 @@ body {
 .search-list {
   list-style-type: none;
   margin: auto;
+  margin-bottom: 50px;
 }
 
 .no-gif-message {
@@ -527,7 +528,7 @@ html {
     font-size: 12px;
   }
   .small-image {
-    width: 70px;
+    width: 40px;
   }
 
   header {
