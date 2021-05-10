@@ -504,8 +504,9 @@ html {
   margin-top: 10px;
   margin-left: 20px;
   width: -webkit-fill-available;
-  /* width: -webkit-fill-available; */
+  width: -webkit-fill-available;
   height: auto;
+  box-shadow: none;
 }
 .my-giphy-line {
   width: 300px;
@@ -588,6 +589,9 @@ html {
   }
   .my-giphy-line {
     width: 150px;
+  }
+  .giphysfav {
+    height: 100px;
   }
 }
 
